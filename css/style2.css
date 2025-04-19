@@ -5,8 +5,8 @@
     font-family:"poppins",sans-serif;
 }
 body{
-    background-color: #c9d6ff;
-    background:linear-gradient(to right,#e2e2e2,#c9d6ff);
+    background-color: #c9ffd2;
+    background:linear-gradient(to right,#e2e2e2,#c9ffd2);
 }
 .container{
     background:#fff;
@@ -26,12 +26,12 @@ form{
     padding:1.3rem;
     margin-bottom:0.4rem;
 }
-input{
+input,select,option{
     color:inherit;
     width:100%;
     background-color:transparent;
     border:none;
-    border-bottom:1px solid #757575;
+    border-bottom:1px solid #c9ffd2;
     padding-left:1.5rem;
     font-size:15px;
 }
@@ -92,7 +92,7 @@ input:focus~label,input:not(:placeholder-shown)~label{
     transition:0.9s;
 }
 .btn:hover{
-    background:#07001f;
+    background:#4c915f;
 }
 .or{
     font-size:1.1rem;
@@ -113,7 +113,7 @@ input:focus~label,input:not(:placeholder-shown)~label{
     transition:1s;
 }
 .icons i:hover{
-    background:#07001f;
+    background:#4c915f;
     font-size:1.6rem;
     border:2px solid rgb(58, 155, 66);
 }
