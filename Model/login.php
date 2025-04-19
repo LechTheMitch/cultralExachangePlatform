@@ -9,7 +9,7 @@ include("register&login.php");
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register & Login</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../css/style2.css">
 </head>
 <body>
    
@@ -49,6 +49,6 @@ justify-content: center;"><?php echo $signIn; ?></p>
           <button id="signUpButton"><a href="register.php">Sign Up</a></button>
         </div>
       </div>
-      <!-- <script src="script2.js"></script> -->
+      <script src="../js/script2.js"></script>
 </body>
 </html>
