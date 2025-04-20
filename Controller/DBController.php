@@ -3,13 +3,14 @@
 
 namespace Controller;
 use mysqli;
+require_once("../database/homestays_and_cultural_exchange.sql");
 
 class DBController
 {
     private $dbServer = "localhost";
     private $dbUser = "root";
     private $dbPass = "";
-    private $dbName = "users";
+    private $dbName = "homestays_and_cultural_exchange";
     public $connection;
 
     //TODO
@@ -40,6 +41,15 @@ class DBController
     }
     public function query($query){
         $this->connection->query($query);
+    }
+    public function getConnection(){
+        return $this->connection;
+    }
+    public function getUserData($user_id)
+    {
+        $sql = "SELECT name FROM user WHERE id = $user_id";
+        $result = $this->connection->query($sql);
+        return $result->fetch_assoc();
     }
 
 }
