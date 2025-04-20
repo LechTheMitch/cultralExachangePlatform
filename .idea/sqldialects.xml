@@ -2,6 +2,5 @@
 <project version="4">
   <component name="SqlDialectMappings">
     <file url="file://$PROJECT_DIR$/database/homestays_and_cultural_exchange.sql" dialect="MySQL" />
-    <file url="file://$PROJECT_DIR$/database/improved_homestay_schema.sql" dialect="MySQL" />
   </component>
 </project>
