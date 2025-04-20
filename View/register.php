@@ -1,4 +1,4 @@
-<?php include("register&login.php"); ?>
+<?php include "../Model/register&login.php"; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register & Login</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="style2.css">
+    <link rel="stylesheet" href="../css/style2.css">
     <style>
         .input-group select {
             width: 100%;
@@ -31,7 +31,7 @@
                 <?php echo $signUp; ?>
             </p>
         <?php } ?>
-        <form method="post" action="register&login.php">
+        <form method="post" action="../Model/register&login.php">
             <div class="input-group">
                 <i class="fas fa-user"></i>
                 <input type="text" name="name" id="fName" placeholder="Full Name" required>
