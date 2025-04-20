@@ -1,0 +1,95 @@
+
+body {
+    font-family: 'Inter', sans-serif;
+}
+
+.logo-font {
+    font-family: 'Pacifico', cursive;
+}
+
+.hero-section {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://readdy.ai/api/search-image?query=A%20beautiful%20panoramic%20scene%20showing%20cultural%20exchange%20between%20travelers%20and%20local%20hosts.%20The%20left%20side%20has%20a%20gradient%20that%20fades%20to%20a%20clean%20white%20background%20for%20text%20placement.%20The%20right%20side%20shows%20diverse%20people%20cooking%20together%20in%20a%20rustic%20kitchen%2C%20gardening%20in%20a%20lush%20setting%2C%20or%20sharing%20stories%20around%20a%20table.%20The%20image%20has%20warm%2C%20inviting%20colors%20with%20natural%20lighting.%20The%20scene%20conveys%20warmth%2C%20connection%2C%20and%20authentic%20cultural%20immersion.&width=1920&height=800&seq=hero123&orientation=landscape');
+    background-size: cover;
+    background-position: center;
+    min-height: 600px;
+}
+
+.btn-primary {
+    background-color: #4F7CAC;
+    border-color: #4F7CAC;
+}
+
+.btn-primary:hover {
+    background-color: #3e6a96;
+    border-color: #3e6a96;
+}
+
+.btn-outline-primary {
+    color: #4F7CAC;
+    border-color: #4F7CAC;
+}
+
+.btn-outline-primary:hover {
+    background-color: #4F7CAC;
+    border-color: #4F7CAC;
+    color: white;
+}
+
+.bg-primary {
+    background-color: #4F7CAC !important;
+}
+
+.text-primary {
+    color: #4F7CAC !important;
+}
+
+.btn-secondary {
+    background-color: #F9A826;
+    border-color: #F9A826;
+}
+
+.btn-secondary:hover {
+    background-color: #e09722;
+    border-color: #e09722;
+}
+
+.rounded-button {
+    border-radius: 8px;
+}
+
+.feature-icon {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+}
+
+.testimonial-img {
+    width: 48px;
+    height: 48px;
+    object-fit: cover;
+}
+
+.host-img {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+}
+
+.badge-tag {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.5rem;
+}
+
+.popular-badge {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: #F9A826;
+    color: white;
+    padding: 0.25rem 1rem;
+    font-size: 0.875rem;
+    border-bottom-left-radius: 0.5rem;
+}
