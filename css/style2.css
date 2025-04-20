@@ -45,7 +45,7 @@ input,select,option{
     color:black;
 }
 input:focus{
-    background-color: transparent;
+    /*background-color: transparent;*/
     outline:transparent;
     border-bottom:2px solid hsl(327,90%,28%);
 }

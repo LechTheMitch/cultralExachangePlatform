@@ -139,6 +139,7 @@ INSERT INTO `traveler` (`id`, `skills`, `dayBooked`, `currentHostID`) VALUES
 
 CREATE TABLE `user` (
   `id` int(10) UNSIGNED NOT NULL,
+
   `name` text NOT NULL,
   `phone_number` text NOT NULL,
   `password` text NOT NULL,

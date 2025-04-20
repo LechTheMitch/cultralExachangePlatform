@@ -14,7 +14,11 @@ roleElement.addEventListener('change', function() {
         skills.style.display = 'none';
     }
 });
+<<<<<<< HEAD
 
+=======
+//
+>>>>>>> d20709c75ec9fddd697cfad75cc6e51e85a77281
 // signUpButton.addEventListener('click',function(){
 //     signInForm.style.display="none";
 //     signUpForm.style.display="block";
