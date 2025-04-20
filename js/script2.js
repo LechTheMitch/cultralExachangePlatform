@@ -14,7 +14,6 @@ roleElement.addEventListener('change', function() {
         skills.style.display = 'none';
     }
 });
-//
 // signUpButton.addEventListener('click',function(){
 //     signInForm.style.display="none";
 //     signUpForm.style.display="block";
