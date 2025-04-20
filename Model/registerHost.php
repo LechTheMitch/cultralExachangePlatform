@@ -28,7 +28,7 @@ if(isset($_POST['submit'])){
         $insertQuery="INSERT INTO host(id,description,accommodation,country,requiredHelp,title,stateID,datesAvailable,category,learningOpportunities,spokenLanguages,cardInformation)
                        VALUES ('$userId','$Description','$Accommodation','$Country','$RequiredHelp','$Title','$State_ID','$Dates_Available','$Category','$Learning_Opportunities','$SpokenLanguages','$CardInformation')";
             if($conn->query($insertQuery)==TRUE){
-                header("location: homepage.php");
+                header("location: ../View/homepage.php");
             }
             else{
                 $signUp = "Error:".$conn->error;

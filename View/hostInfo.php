@@ -62,7 +62,7 @@
 <body>
     <div class="container">
     <h2>HOST INFORMATION</h2>
-    <form action="registerHost.php" method="POST" enctype="multipart/form-data">
+    <form action="../Model/registerHost.php" method="POST" enctype="multipart/form-data">
         <label for="Description">Description:</label>
         <input type="text" id="Description" name="Description" required>
         <label for="Accommodation">Accommodation:</label>
