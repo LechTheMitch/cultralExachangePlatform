@@ -139,3 +139,7 @@ button:hover{
     display: flex;
     justify-content: center;
 }
+
+a{
+    color: #4c915f;
+}
