@@ -1,5 +1,5 @@
 <?php
-include("Model/connect.php");
+include("connect.php");
 
 $location = $_POST['location'] ?? '';
 $worktype = $_POST['work_type'] ?? '';
