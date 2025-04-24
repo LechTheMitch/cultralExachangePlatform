@@ -147,14 +147,22 @@ CREATE TABLE `user` (
   `role` enum('host','traveler','admin') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `user`
---
-
 INSERT INTO `user` (`id`, `name`, `phone_number`, `password`, `email`, `role`) VALUES
 (1, 'Ahmed Traveler', '1234567890', 'hashedpass1', 'ahmed@example.com', 'traveler'),
 (2, 'Mona Host', '0987654321', 'hashedpass2', 'mona@example.com', 'host'),
 (3, 'Admin User', '1112223333', 'hashedadmin', 'admin@example.com', 'admin');
+--
+-- Dumping data for table `user`
+
+-- Final Version, should be used for production
+CREATE TABLE host_images (
+     image_id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+     host_id INT UNSIGNED NOT NULL,
+     image_url VARCHAR(255) NOT NULL,
+     caption VARCHAR(255),
+     uploaded_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+     FOREIGN KEY (host_id) REFERENCES Host(id) ON DELETE CASCADE
+);
 
 --
 -- Indexes for dumped tables
@@ -259,6 +267,18 @@ ALTER TABLE `review`
 ALTER TABLE `traveler`
   ADD CONSTRAINT `traveler_ibfk_1` FOREIGN KEY (`id`) REFERENCES `user` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `traveler_ibfk_2` FOREIGN KEY (`currentHostID`) REFERENCES `host` (`id`) ON DELETE SET NULL;
+-- Final Version, should be used for production
+-- TODO
+ALTER TABLE `traveler`
+  ADD COLUMN cardInformation text NOT NULL,
+  ADD COLUMN dateSubscribed datetime NOT NULL DEFAULT current_timestamp(),
+  ADD COLUMN isSubscribed bool NOT NULL DEFAULT FALSE;
+
+ALTER TABLE `Host`
+    DROP COLUMN cardInformation;
+
+ALTER TABLE `user`
+    ADD COLUMN img VARCHAR(255);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

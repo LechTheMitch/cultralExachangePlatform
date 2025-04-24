@@ -3,6 +3,8 @@
 
 namespace Controller;
 use mysqli;
+use UserTypes\User;
+
 require_once("../database/homestays_and_cultural_exchange.sql");
 
 class DBController
@@ -11,7 +13,7 @@ class DBController
     private $dbUser = "root";
     private $dbPass = "";
     private $dbName = "homestays_and_cultural_exchange";
-    public $connection;
+    public mysqli $connection;
 
     //TODO
     public function openConnection(): bool
@@ -45,12 +47,43 @@ class DBController
     public function getConnection(){
         return $this->connection;
     }
-    public function getUserData($user_id)
+    public function getUserById($user_id)
     {
-        $sql = "SELECT name FROM user WHERE id = $user_id";
+        $sql = "SELECT * FROM user WHERE id = $user_id";
         $result = $this->connection->query($sql);
         return $result->fetch_assoc();
     }
+    public function getUserByEmail($email)
+    {
+        $sql = "SELECT * FROM user WHERE email = '$email'";
+        $result = $this->connection->query($sql);
+        if ($result->num_rows > 0) {
+            return $result->fetch_assoc();
+        } else {
+            return null;
+        }
+    }
+    public function getUserByUsername($username){
+        $sql = "SELECT * FROM user WHERE username = '$username'";
+        $result = $this->connection->query($sql);
+        if ($result->num_rows > 0) {
+            return $result->fetch_assoc();
+        } else {
+            return null;
+        }
+    }
+    public function filterUsersByCountry($country, $role)
+    {
+        $sql = "SELECT * FROM user WHERE country = '$country' AND role = '$role'";
+        $result = $this->connection->query($sql);
+        if ($result->num_rows > 0) {
+            return $result->fetch_all(MYSQLI_ASSOC);
+        } else {
+            return null;
+        }
+    }
+    
+
 
 }
 ?>
