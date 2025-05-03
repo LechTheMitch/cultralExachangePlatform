@@ -1,0 +1,46 @@
+/* Hover effect for the container */
+.profile-container:hover {
+    transform: scale(1.02);
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+}
+
+/* Hover effect for image */
+.profile-image-container:hover {
+    transform: scale(1.1);
+    transition: all 0.3s ease-in-out;
+}
+
+/* Hover effect for text rows */
+.text-section:hover {
+    background-color: #e0e0e0;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Hover effect for individual text items */
+.text-item:hover {
+    color: #007bff;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.hover-box {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.hover-box:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.contact-box {
+    transition: transform 0.3s ease, filter 0.3s ease;
+    cursor: pointer;
+}
+
+.contact-box:hover {
+    transform: scale(1.03);
+    filter: brightness(1.1);
+}
