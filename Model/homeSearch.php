@@ -5,7 +5,7 @@ $location = $_POST['location'] ?? '';
 $worktype = $_POST['work_type'] ?? '';
 $date = $_POST['duration'] ?? '';
 
-// JOIN user table to get the name
+
 $sql = "SELECT user.name, host.country, host.category, host.datesAvailable 
         FROM host
         INNER JOIN user ON host.id = user.id
