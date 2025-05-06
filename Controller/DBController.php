@@ -3,7 +3,6 @@
 
 namespace Controller;
 use mysqli;
-use UserTypes\User;
 
 require_once("../database/homestays_and_cultural_exchange.sql");
 
@@ -37,7 +36,7 @@ class DBController
         }
         else
         {
-            echo "Connection is not opened";
+            echo "Connection is not open";
             return false;
         }
     }
@@ -81,6 +80,29 @@ class DBController
         } else {
             return null;
         }
+    }
+    public function filterUsersByCity($city, $role){
+
+    }
+    public static function insertWithStyle($userID, $cardNumber, $expiryMonth, $expiryYear, $zipCode):bool
+    {
+        $dbController = new DBController();
+        $dbController->openConnection();
+        $cardInformation = "$cardNumber-$expiryMonth-$expiryYear-$zipCode";
+        $sql = "INSERT INTO traveler WHERE id=$userID (cardInformation) VALUES ('$cardInformation')";
+        $result = $dbController->connection->query($sql);
+        $dbController->closeConnection();
+        return $result;
+    }
+    public static function retrieveWithStyle($userID):array
+    {
+        $dbController = new DBController();
+        $dbController->openConnection();
+        $sql = "SELECT cardInformation FROM traveler WHERE id = $userID";
+        $result = $dbController->connection->query($sql);
+        $dbController->closeConnection();
+        $result->fetch_assoc();
+        return explode("-", $result);
     }
     
 
