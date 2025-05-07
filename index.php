@@ -52,12 +52,13 @@
                                     <li><a class="dropdown-item" href="#">German</a></li>
                                 </ul>
                             </div>
-                            <form action="/View/login.php">
+                            <a href="./View/login.php">
                             <button class="btn btn-outline-primary rounded-button me-2">Sign In</button>
-                            </form>
-                            <form action="/View/register.php">
+                            </a>
+                            <a href="./View/register.php">
                             <button class="btn btn-primary rounded-button" >Register</button>
-                            </form>
+                            </a>
+
                         </div>
                     </div>
                 </div>
