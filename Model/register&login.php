@@ -44,6 +44,7 @@ if (isset($_POST['signUp'])) {
             $_SESSION['currentID'] = $userId;
             $_SESSION['email'] = $email;
             $_SESSION['role'] = $role;
+            $_SESSION['userName'] = $firstName;
             
             if ($role == 'Host') {
                 header("Location: ../View/hostInfo.php");
