@@ -1,14 +1,22 @@
 <?php
 include("connect.php");
 
-$user_id = 1;                       // هنظبط الجزئية دي مع الLogin
+$user_id = $_SESSION['user_id'];       
 
 $sqlTraveler = "SELECT * FROM traveler WHERE id = $user_id";
-$sqlUser = "SELECT name, phone_number , email , role FROM user WHERE id = $user_id";
+$sqlUser = "SELECT name, phone_number , email , role , img FROM user WHERE id = $user_id";
 $resultTraveler = mysqli_query($conn, $sqlTraveler);
 $resultUser = mysqli_query($conn, $sqlUser);
 $traveler = mysqli_fetch_assoc($resultTraveler);
 $user = mysqli_fetch_assoc($resultUser);
+
+if (!empty($traveler['currentHostID'])) {
+    $sqlHost = "SELECT * FROM host WHERE id = {$traveler['currentHostID']}";
+    $resultHost = mysqli_query($conn, $sqlHost);
+    $host = mysqli_fetch_assoc($resultHost);
+}
+
+
 
 $hostName = null; // Default
 if (!empty($traveler["currentHostID"])) {
@@ -32,10 +40,10 @@ mysqli_close($conn);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HostProfile</title>
+    <title>TravelerProfile</title>
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"> <!--for icons-->
-    <link rel="stylesheet" href="../css/host.css"> <!--for icons-->
+    <link rel="stylesheet" href="../css/host.css">
 </head>
 
 <body>
@@ -81,11 +89,11 @@ mysqli_close($conn);
     </header>
 
     <main>
-        <div class="container mt-5" style="background-color: #f1f1f1; border-radius: 10px; padding: 30px;">
+        <div class="container my-5" style="background-color: #f1f1f1; border-radius: 10px; padding: 30px;">
             <div class="row justify-content-center">
                 <!-- Profile Image -->
                 <div class="col-md-4 d-flex justify-content-center align-items-center mb-4 profile-image-container">
-                    <img src="../images/test.jpeg" alt="profileImage"
+                    <img src="../<?php echo $user['img'] ?>" alt="profileImage"
                         class="img-fluid rounded-circle"
                         style="width: 80%; height: auto; aspect-ratio: 1 / 1; object-fit: cover;">
                 </div>
@@ -110,24 +118,76 @@ mysqli_close($conn);
                     <!-- Current Host -->
                     <div class="row mb-3 text-center text-item">
                         <h4><strong>Current Host:</strong> <?php
-                                                                if (empty($traveler["currentHostID"])) {
-                                                                    echo "No Current Host";
-                                                                } else {
-                                                                    echo $hostName["name"];
-                                                                }
+                                                            if (empty($traveler["currentHostID"])) {
+                                                                echo "No Current Host";
+                                                            } else {
+                                                                echo $hostName["name"];
+                                                            }
                                                             ?></h4>
                     </div>
                 </div>
             </div>
         </div>
+
+        <?php if (empty($traveler['currentHostID'])): ?>
+            <!-- No Host Assigned -->
+            <div class="container border mt-5 rounded shadow-sm p-4 text-center" style="background-color: #ffcccc;">
+                <h3 class="text-danger">
+                    <i class="bi bi-exclamation-triangle-fill me-2"></i>
+                    You do not currently have a host assigned.
+                </h3>
+            </div>
+        <?php else: ?>
+            <!-- Booking and Host Info -->
+            <div class="container border mt-5 rounded shadow-sm overflow-hidden" style="background-color: #f7f9f9;">
+                <div class="row">
+                    <!-- Booking Date & Time -->
+                    <div class="col-md-6 p-4 rounded-start text-start" style="background-color: #ffe0b2;">
+                        <h2>Booking Info</h2>
+                        <h4>
+                            <i class="bi bi-calendar-event me-2"></i>
+                            Day Booked & Time: <?php echo $traveler['dayBooked']; ?>
+                        </h4>
+                    </div>
+
+                    <!-- Help & Accommodation Info -->
+                    <div class="col-md-6 p-0 text-center">
+                        <div class="hover-box p-3 text-white" style="background-color: #6b705c;">
+                            <h3 class="w-100">
+                                <i class="bi bi-tools me-2"></i>
+                                Helping In: <?php echo $host['requiredHelp']; ?>
+                            </h3>
+                        </div>
+                        <div class="hover-box p-3 text-white rounded-end" style="background-color: #a5a58d;">
+                            <h3 class="w-100">
+                                <i class="bi bi-house-heart me-2"></i>
+                                Accommodation: <?php echo $host['accommodation']; ?>
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <?php endif; ?>
+
+
+
+        <!-- contact section -->
+        <div class="container border mt-3 rounded shadow-sm overflow-hidden">
+            <!-- Header Row -->
+            <div class="row p-3 text-white text-center" style="background-color: #3c403d;">
+                <h2 class="w-100"><i class="bi bi-person-lines-fill me-2"></i>Contacts</h2>
+            </div>
+
+            <!-- Contact Info -->
+            <div class="row text-center">
+                <div class="col p-3 text-white contact-box" style="background-color: #588157;">
+                    <h4><i class="bi bi-envelope-fill me-2"></i>Email: <?php echo $user["email"] ?></h4>
+                </div>
+                <div class="col p-3 text-white rounded-end contact-box" style="background-color: #6b705c;">
+                    <h4><i class="bi bi-telephone-fill me-2"></i>Phone Number: <?php echo $user["phone_number"] ?></h4>
+                </div>
+            </div>
     </main>
-
-
-
-
-
-
-
 
 
 </body>

@@ -1,10 +1,10 @@
 <?php
 include("connect.php");
 
-$user_id = 2;                       // هنظبط الجزئية دي مع الLogin
+$user_id = $_SESSION['user_id'];  
 
 $sqlHost = "SELECT * FROM host WHERE id = $user_id";
-$sqlUser = "SELECT name, phone_number , email , role FROM user WHERE id = $user_id";
+$sqlUser = "SELECT name, phone_number , email , role , img FROM user WHERE id = $user_id";
 $resultHost = mysqli_query($conn, $sqlHost);
 $resultUser = mysqli_query($conn, $sqlUser);
 $host = mysqli_fetch_assoc($resultHost);
@@ -72,7 +72,9 @@ mysqli_close($conn);
             <div class="row justify-content-center">
                 <!-- Image Section with Hover Effect -->
                 <div class="col-md-4 d-flex justify-content-center align-items-center mb-4 profile-image-container">
-                    <img src="../images/test.jpeg" alt="profileImage" class="img-fluid rounded-circle" style="width: 80%; height: auto; aspect-ratio: 1 / 1; object-fit: cover;">
+                    <img src="../<?php echo $user['img'] ?>" alt="profileImage"
+                        class="img-fluid rounded-circle"
+                        style="width: 80%; height: auto; aspect-ratio: 1 / 1; object-fit: cover;">
                 </div>
 
                 <!-- Text Section -->
