@@ -1,5 +1,5 @@
 <?php
-include("connect.php");
+include("../Model/connect.php");
 
 $user_id = 2;                       // هنظبط الجزئية دي مع الLogin
 
