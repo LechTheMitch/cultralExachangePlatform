@@ -48,7 +48,7 @@ if (isset($_POST['signUp'])) {
             if ($role == 'Host') {
                 header("Location: ../View/hostInfo.php");
             } else {
-                header("Location: ../View/homepage.php");
+                header("Location: ../index.php");
             }
             exit();
             
@@ -71,7 +71,7 @@ if (isset($_POST['signIn'])) {
         $_SESSION['user_id'] = $row['id'];
         $_SESSION['email'] = $row['email'];
         $_SESSION['role'] = $row['role'];
-        header("Location: ../View/homepage.php");
+        header("Location: ../index.php");
         exit();
     } else {
         $signIn = "Incorrect Email or Password";
