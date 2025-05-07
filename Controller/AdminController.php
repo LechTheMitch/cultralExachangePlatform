@@ -2,10 +2,8 @@
 
 namespace Controller;
 include_once("../Controller/DBController.php");
-class AdminController
+final class AdminController
 {
-    protected DBController $dbController;
-
 
     public static function showUsers($users): void
     {
@@ -16,6 +14,12 @@ class AdminController
             echo '<td>' . $user['email'] . '</td>';
             echo '<td>' . $user['phone_number'] . '</td>';
             echo '<td>' . $user['role'] . '</td>';
+            if ($user['role'] == 'traveler') {
+                echo '<td>' . boolval($user['isSubscribed']) . '</td>';
+            }
+            else if ($user['role'] == 'host'){
+                echo '<td>' . $user['stateID'] . '</td>';
+            }
             echo '<td> <form method="post">
                                     <input type="hidden" name="user_id" value="' . $user['id'] . '">
                                     <input type="submit" name="delete" class="delete" value="Delete"> </form></td>';
@@ -36,7 +40,7 @@ class AdminController
         }
 
     }
-    public static function handleDeleteRequest(): void
+    public static function handleDeletionRequest(): void
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete'])) {
             $userIdToDelete = $_POST['user_id'];
@@ -47,18 +51,9 @@ class AdminController
             }
         }
     }
-    public static function displayUsers(): void
+    public static function displayUsers(string $role): void
     {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['filter'])) {
-            $role = $_POST['role'];
-            $isSubscribed = $_POST['isSubscribed'];
-            $filters = [
-                'role' => $role,
-                'isSubscribed' => $isSubscribed
-            ];
-            $filteredUsers = self::filterUsers($filters);
-            self::showUsers($filteredUsers);
-        }
+            self::showUsers(self::listUsersSpecific($role));
     }
     public static function getSubscriberCount(): int
     {
@@ -103,6 +98,21 @@ class AdminController
         $result = $stmt->get_result()->fetch_column();
         $dbController->closeConnection();
         return $result;
+    }
+    public static function listUsersSpecific(string $role): array
+    {
+        $dbController = new DBController();
+        $dbController->openConnection();
+        $sql = "SELECT user.*, $role.* 
+            FROM user 
+            INNER JOIN $role ON user.id = $role.id";
+        $result = $dbController->connection->query($sql);
+        $hosts = [];
+        while ($row = $result->fetch_assoc()) {
+            $hosts[] = $row;
+        }
+        $dbController->closeConnection();
+        return $hosts;
     }
     public static function filterUsers(array $filters): array
     {

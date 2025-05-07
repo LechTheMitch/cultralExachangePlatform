@@ -25,18 +25,19 @@
             //Preloading Required Files
             use Controller\AdminController as AdminController;
             include "../Controller/AdminController.php";
-            AdminController::handleDeleteRequest();
+            AdminController::handleDeletionRequest();
 
 
             $_SESSION['userName'] = "Man"; // Temporary for testing
-            $_SESSION['userRole'] = "admin"; // Temporary for testing
-            if (!isset($_SESSION['userName']) || $_SESSION['userRole'] != 'admin') {
+            $_SESSION['role'] = "admin"; // Temporary for testing
+            if (!isset($_SESSION['userName']) || $_SESSION['role'] != 'admin') {
                 echo '<script>window.alert("You are not authorized to view this page.");</script>';
                 sleep(3);
                 header("Location: login.php");
                 exit();
             }
             echo '<h1>Welcome Back, ' . $_SESSION['userName'] . '</h1>';
+            echo var_dump(AdminController::listUsersSpecific("traveler"));
             ?>
         </section>
         <main>
@@ -56,7 +57,7 @@
                     </tr>
                     <?php
                     //AdminController::showUsers(AdminController::listUsers());
-                    AdminController::displayUsers();
+                    AdminController::displayUsers('traveler');
                     ?>
                 </table>
             </div>

@@ -41,7 +41,7 @@ if (isset($_POST['signUp'])) {
             
             $conn->commit();
             
-            $_SESSION['user_id'] = $userId;
+            $_SESSION['currentID'] = $userId;
             $_SESSION['email'] = $email;
             $_SESSION['role'] = $role;
             

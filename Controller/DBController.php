@@ -4,9 +4,8 @@
 namespace Controller;
 use mysqli;
 
-require_once("../database/homestays_and_cultural_exchange.sql");
 
-class DBController
+final class DBController
 {
     private $dbServer = "localhost";
     private $dbUser = "root";
