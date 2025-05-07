@@ -49,7 +49,7 @@ if (isset($_POST['signUp'])) {
             if ($role == 'Host') {
                 header("Location: ../View/hostInfo.php");
             } else {
-                header("Location: ../index.php");
+                header("Location: ../View/index.php");
             }
             exit();
             
@@ -69,10 +69,11 @@ if (isset($_POST['signIn'])) {
     
     if ($result->num_rows > 0) {
         $row = $result->fetch_assoc();
-        $_SESSION['user_id'] = $row['id'];
+        $_SESSION['currentID'] = $row['id'];
         $_SESSION['email'] = $row['email'];
         $_SESSION['role'] = $row['role'];
-        header("Location: ../index.php");
+        $_SESSION['userName'] = $row['name'];
+        header("Location: ../View/index.php");
         exit();
     } else {
         $signIn = "Incorrect Email or Password";

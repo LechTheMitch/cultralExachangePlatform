@@ -1,5 +1,7 @@
 <?php
-    session_start();
+    if (session_status() == PHP_SESSION_NONE) {
+        session_start();
+    }
     ?>
 <head>
     <meta charset="UTF-8">
@@ -55,7 +57,7 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link" href="../index.php">Home</a>
+                            <a class="nav-link" href="./index.php">Home</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Find Hosts</a>
@@ -64,7 +66,7 @@
                             <a class="nav-link" href="./chat.php">Messages</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../View/about.html">About Us</a>
+                            <a class="nav-link" href="./about.html">About Us</a>
                         </li>
                     </ul>
                     <div class="d-flex ms-lg-4">

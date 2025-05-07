@@ -1,7 +1,8 @@
 <?php
+session_start();
 include("../Model/connect.php");
 
-$user_id = 1;                       // هنظبط الجزئية دي مع الLogin
+$user_id = $_SESSION['currentID'];                       // هنظبط الجزئية دي مع الLogin
 
 $sqlTraveler = "SELECT * FROM traveler WHERE id = $user_id";
 $sqlUser = "SELECT name, phone_number , email , role FROM user WHERE id = $user_id";
@@ -39,7 +40,10 @@ mysqli_close($conn);
 </head>
 
 <body>
-    <header>
+    <?php
+    include "header.php";
+    ?>
+    <!-- <header>
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
             <div class="container-fluid">
                 <a class="navbar-brand" href="#">Navbar</a>
@@ -78,7 +82,7 @@ mysqli_close($conn);
                 </div>
             </div>
         </nav>
-    </header>
+    </header> -->
 
     <main>
         <div class="container mt-5" style="background-color: #f1f1f1; border-radius: 10px; padding: 30px;">
