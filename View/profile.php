@@ -1,5 +1,5 @@
 <?php
-require_once "database/homestays_and_cultural_exchange.sql";
+require_once "../database/homestays_and_cultural_exchange.sql";
 
 $host = "localhost";
 $user = "root";
