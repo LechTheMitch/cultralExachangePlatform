@@ -23,7 +23,7 @@ if (isset($_POST['signUp'])) {
         
         try {
             $insertQuery = "INSERT INTO user (name, phone_number, email, password, role)
-                          VALUES ('$firstName', '$phone_number', '$email', '$password', '$role')";
+                            VALUES ('$firstName', '$phone_number', '$email', '$password', '$role')";
             
             if (!$conn->query($insertQuery)) {
                 throw new Exception("Error in user registration: " . $conn->error);

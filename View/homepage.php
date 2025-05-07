@@ -6,6 +6,9 @@
     <title>Homepage</title>
 </head>
 <body>
+  <?php
+    include "header.php";
+  ?>
     <div style="text-align:center; padding:15%;">
       <p  style="font-size:50px; font-weight:bold;">
        Hello :)

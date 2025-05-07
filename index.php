@@ -14,8 +14,11 @@
     <link rel="stylesheet" href="css/home.css">
 </head>
 <body>
-  
-    <header class="bg-white shadow-sm sticky-top">
+    <?php 
+    
+        include 'View/header.php';
+    ?>
+    <!-- <header class="bg-white shadow-sm sticky-top">
         <div class="container">
             <nav class="navbar navbar-expand-lg py-3">
                 <div class="container-fluid">
@@ -64,7 +67,7 @@
                 </div>
             </nav>
         </div>
-    </header>
+    </header> -->
 
     <!-- Hero Section -->
     <section class="hero-section d-flex align-items-center text-white">

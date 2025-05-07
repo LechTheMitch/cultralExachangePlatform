@@ -21,6 +21,26 @@
         .main-text {
             color: black;
         }
+        .loginButton {
+            background-color: transparent;
+            border: 1px solid green;
+            color: green;
+        }
+        .registerButton {
+            background-color: green;
+            color: white;
+            border: 1px solid green;
+        }
+        .loginButton:hover {
+            background-color: green;
+            color: white;
+            border: 1px solid green;
+        }
+        .registerButton:hover {
+            background-color: green;
+            color: white;
+            border: 1px solid green;
+        }
 
     </style>
 </head>
@@ -28,20 +48,20 @@
     <div class="container">
         <nav class="navbar navbar-expand-lg py-3">
             <div class="container-fluid">
-                <a class="navbar-brand logo-font text-primary fs-3" href="#">CultureStay</a>
+                <a class="navbar-brand logo-font text-primary fs-3" href="../index.php">CultureStay</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Home</a>
+                            <a class="nav-link" href="../index.php">Home</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Find Hosts</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Messages</a>
+                            <a class="nav-link" href="./chat.php">Messages</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="../View/about.html">About Us</a>
@@ -61,11 +81,11 @@
 
                             </div>
                         <?php else: ?>
-                            <a href="../View/login.php">
-                                <button class="btn btn-outline-primary rounded-button me-2">Sign In</button>
+                            <a href="./login.php">
+                                <button class="btn btn-outline-primary rounded-button me-2 loginButton">Sign In</button>
                             </a>
-                            <a href="../View/register.php">
-                                <button class="btn btn-primary rounded-button">Register</button>
+                            <a href="./register.php">
+                                <button class="btn btn-primary rounded-button registerButton">Register</button>
                             </a>
                         <?php endif; ?>
                     </div>
