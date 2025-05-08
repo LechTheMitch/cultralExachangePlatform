@@ -39,11 +39,153 @@ if (isset($_SESSION["currentID"])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Payment</title>
     <style>
+        /* Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
 
+        body {
+            background: url('background.jpg') no-repeat center center/cover;
+            height: 100vh;
+            padding: 20px;
+        }
+
+        /* Container */
+        .container {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            width: 50%;
+            min-width: 400px;
+            text-align: center;
+        }
+
+        /* Title */
+        h2 {
+            margin-bottom: 25px;
+            font-size: 28px;
+            color: #333;
+        }
+
+        /* Form */
+        .payment-form {
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+        }
+
+        .form-group {
+            width: 100%;
+            margin-bottom: 15px;
+        }
+
+        .payment-form label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        .payment-form input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        /* Focus Effect */
+        .payment-form input:focus {
+            border-color: #007bff;
+            outline: none;
+            box-shadow: 0 0 3px #007bff88;
+        }
+
+        /* Style card info input */
+        .payment-form input[type="text"]:not(#film):not(#city):not(#country) {
+            font-family: monospace;
+            letter-spacing: 2px;
+        }
+
+        /* Submit Button */
+        .payment-form button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 15px;
+            transition: background-color 0.3s ease;
+        }
+
+        .payment-form button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Navigation Buttons */
+        .buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .home-btn,
+        .login-btn {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 48%;
+            background-color: #007bff;
+            color: white;
+            transition: background-color 0.3s ease;
+        }
+
+        .home-btn:hover,
+        .login-btn:hover {
+            background-color: #0056b3;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                width: 90%;
+            }
+
+            .form-row {
+                flex-direction: column;
+            }
+
+            .buttons {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .home-btn,
+            .login-btn {
+                width: 100%;
+            }
+        }
     </style>
 </head>
 
 <body>
+    <?php 
+        include 'header.php'; // Include the payment controller for processing payments
+    ?>
 
     <div class="container">
         <h2>Payment</h2>
@@ -91,6 +233,7 @@ if (isset($_SESSION["currentID"])) {
         </div>
     </div>
 
+    <?php include 'footer.php'; ?>
 </body>
 
 </html>
