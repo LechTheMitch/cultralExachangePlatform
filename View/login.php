@@ -1,5 +1,4 @@
 <?php
-include "../Model/register&login.php";
 
 ?>
 <!DOCTYPE html>
@@ -8,19 +7,21 @@ include "../Model/register&login.php";
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register & Login</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../css/all.min.css">
     <link rel="stylesheet" href="../css/style2.css">
 </head>
 <body>
     <div class="container" id="signIn">
       <h1 class="form-title">Sign In</h1>
-      <?php if (!empty($signIn)) { ?>
-          <p class="error" style="color: red;display: flex;
-justify-content: center;"><?php echo $signIn; ?></p>
-        <?php } ?>
+
+          <?php 
+          if (isset($signIn)) {
+              echo '<p class="error" style="color: red;display: flex; justify-content: center;">Incorrect Email or Password</p>';
+          }
+          ?>
         <br>
         <br>
-        <form method="post " action="register&login.php">
+        <form method="post" action="../Model/loginController.php">
           <div class="input-group">
               <i class="fas fa-envelope"></i>
               <input type="email" name="email" id="email" placeholder="Email" required>

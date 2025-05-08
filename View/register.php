@@ -1,4 +1,6 @@
-<?php include "../Model/register&login.php"; ?>
+<?php 
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,7 +33,7 @@
                 <?php echo $signUp; ?>
             </p>
         <?php } ?>
-        <form method="post" action="../Model/register&login.php" enctype="multipart/form-data">
+        <form method="post" action="../Model/registerController.php" enctype="multipart/form-data">
             <div class="input-group">
                 <i class="fas fa-user"></i>
                 <input type="text" name="name" id="fName" placeholder="Full Name" required>
