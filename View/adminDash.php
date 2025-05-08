@@ -3,7 +3,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Admin Dashboard</title>
-       <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">-->
+        <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">-->
         <link rel="stylesheet" href="../css/style.css">
     </head>
     <body>
@@ -22,6 +22,7 @@
         </header>
         <section class="hero">
             <?php
+            session_start();
             //Preloading Required Files
             use Controller\AdminController as AdminController;
             use UserTypes\Admin;
@@ -31,7 +32,6 @@
             AdminController::handleRequest();
 
 
-            $_SESSION['userName'] = "Man"; // Temporary for testing
             $_SESSION['role'] = "admin"; // Temporary for testing
             if (!isset($_SESSION['userName']) || $_SESSION['role'] != 'admin') {
                 echo '<script>window.alert("You are not authorized to view this page.");</script>';

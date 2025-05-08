@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,7 +18,7 @@
 <body>
     <?php 
     
-        include './header.php';
+        include 'header.php';
     ?>
     <!-- <header class="bg-white shadow-sm sticky-top">
         <div class="container">
@@ -76,8 +79,8 @@
                     <h1 class="display-4 fw-bold mb-4">Travel Meaningfully, Exchange Culturally</h1>
                     <p class="lead mb-5">Connect with hosts worldwide for authentic cultural experiences. Exchange your skills for accommodation and immerse yourself in local traditions.</p>
                     <div class="d-flex flex-wrap gap-3 mb-5">
-                        <button class="btn btn-primary btn-lg rounded-button">Find Hosts</button>
-                        <button class="btn btn-outline-light btn-lg rounded-button">Become a Host</button>
+                        <a href="listing.php"><button class="btn btn-primary btn-lg rounded-button findHostButton">Find Hosts</button></a>
+                        <a href="register.php"><button class="btn btn-outline-light btn-lg rounded-button becomeHostButton">Become a Host</button></a>
                     </div>
                     <div class="d-flex flex-wrap gap-5">
                         <div>
@@ -200,11 +203,49 @@
             </div>
             
             <div class="row g-4">
-                <!-- Card 1 -->
+                <?php
+                    
+                    
+                    
+                    include '../Model/connect.php'; // Include your database connection file
+                    
+                    $query = "SELECT * FROM host ORDER BY country ASC LIMIT 3";
+                    $result = $conn->query($query);
+                    
+                    if ($result->num_rows > 0) {
+                        while ($row = $result->fetch_assoc()) {
+                            $details = "SELECT * FROM user where id = $row[id]";
+                            $detailsResult = $conn->query($details);
+                            $details = $detailsResult->fetch_assoc();
+
+                            if($_SESSION["currentID"] == $row["id"]){ 
+                                continue; 
+                            }
+                            echo '<div class="col-md-6 col-lg-4">';
+                            echo '<div class="card h-100 shadow-sm border-0 overflow-hidden">';
+                            echo '<div class="position-relative" style="height: 200px;">';
+                            echo '<img src="'. $details["img"] .'" class="card-img-top h-100 w-100 object-fit-cover" alt="Host Image">';
+                            echo '<span class="position-absolute top-0 end-0 bg-white text-primary rounded-pill px-3 py-1 m-3 small fw-medium">Verified Host</span>';
+                            echo '</div>';
+                            echo '<div class="card-body">';
+                            echo '<h5 class="card-title fw-semibold">' . htmlspecialchars($details["name"]) . '</h5>';
+                            echo '<p class="card-text text-muted small"><i class="bi bi-geo-alt"></i> ' . htmlspecialchars($row['country']) . '</p>';
+                            echo '<p class="card-text text-muted small">' . htmlspecialchars($row['description']) . '</p>';
+                            echo '<a href="chat.php" class="text-primary fw-medium small">View Details</a>';
+                            echo '</div>';
+                            echo '</div>';
+                            echo '</div>';
+                        }
+                    
+                    } else {
+                        echo '<p>No hosts found.</p>';
+                    }
+                    ?>
+                <!-- Card 1
                 <div class="col-md-6 col-lg-4">
                     <div class="card h-100 shadow-sm border-0 overflow-hidden">
                         <div class="position-relative" style="height: 200px;">
-                            <img src="https://readdy.ai/api/search-image?query=A%20beautiful%20organic%20farm%20in%20Tuscany%2C%20Italy%20with%20rolling%20hills%2C%20olive%20groves%2C%20and%20vineyards.%20The%20scene%20shows%20a%20rustic%20farmhouse%20with%20terracotta%20roof%20tiles%20surrounded%20by%20lush%20gardens.%20The%20lighting%20is%20warm%20and%20golden%2C%20creating%20a%20peaceful%2C%20inviting%20atmosphere.%20The%20image%20has%20a%20natural%2C%20authentic%20feel%20with%20no%20people%20visible.&width=600&height=400&seq=farm1&orientation=landscape" class="card-img-top h-100 w-100 object-fit-cover" alt="Organic Farm in Tuscany">
+                            <img src="">
                             <span class="position-absolute top-0 end-0 bg-white text-primary rounded-pill px-3 py-1 m-3 small fw-medium">Verified Host</span>
                         </div>
                         <div class="card-body">
@@ -247,9 +288,9 @@
                         </div>
                     </div>
                 </div>
-                
+                 -->
                 <!-- Card 2 -->
-                <div class="col-md-6 col-lg-4">
+                <!-- <div class="col-md-6 col-lg-4">
                     <div class="card h-100 shadow-sm border-0 overflow-hidden">
                         <div class="position-relative" style="height: 200px;">
                             <img src="https://readdy.ai/api/search-image?query=A%20beautiful%20eco-retreat%20in%20Bali%2C%20Indonesia.%20The%20image%20shows%20a%20traditional%20Balinese%20wooden%20house%20surrounded%20by%20lush%20tropical%20gardens%20with%20palm%20trees%20and%20colorful%20flowers.%20Theres%20a%20small%20yoga%20platform%20visible%20near%20a%20natural%20pool.%20The%20scene%20has%20warm%2C%20natural%20lighting%20with%20rich%20greens%20and%20earth%20tones%2C%20creating%20a%20peaceful%20sanctuary%20atmosphere.&width=600&height=400&seq=retreat1&orientation=landscape" class="card-img-top h-100 w-100 object-fit-cover" alt="Eco Retreat in Bali">
@@ -294,10 +335,10 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 
                 <!-- Card 3 -->
-                <div class="col-md-6 col-lg-4">
+                <!-- <div class="col-md-6 col-lg-4">
                     <div class="card h-100 shadow-sm border-0 overflow-hidden">
                         <div class="position-relative" style="height: 200px;">
                             <img src="https://readdy.ai/api/search-image?query=A%20beautiful%20horse%20ranch%20in%20Montana%2C%20USA.%20The%20image%20shows%20a%20large%20wooden%20ranch%20house%20with%20a%20wraparound%20porch%2C%20surrounded%20by%20vast%20open%20fields%20and%20mountains%20in%20the%20background.%20There%20are%20several%20horses%20visible%20in%20a%20fenced%20pasture.%20The%20scene%20has%20golden%20hour%20lighting%20with%20rich%20blues%20and%20amber%20tones%2C%20creating%20a%20quintessential%20American%20West%20atmosphere.&width=600&height=400&seq=ranch1&orientation=landscape" class="card-img-top h-100 w-100 object-fit-cover" alt="Horse Ranch in Montana">
@@ -343,11 +384,8 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
             
-            <div class="text-center mt-5">
-                <button class="btn btn-outline-secondary rounded-button px-4 py-2">Load More Opportunities</button>
-            </div>
         </div>
     </section>
 
@@ -379,7 +417,7 @@
                 </div>
             </div>
             <div class="text-center mt-5">
-                <button class="btn btn-primary rounded-button px-4 py-3">Get Started Today</button>
+                <a href="register.php"></a><button class="btn btn-primary rounded-button px-4 py-3 findHostButton">Get Started Today</button></a>
             </div>
         </div>
     </section>
@@ -391,48 +429,6 @@
             <p class="text-center text-muted mx-auto mb-5" style="max-width: 700px;">Join our global community and unlock all the features to make your cultural exchange experience unforgettable.</p>
             
             <div class="row justify-content-center g-4">
-                <div class="col-lg-6">
-                    <div class="card h-100 border-0 shadow-sm">
-                        <div class="card-body p-4">
-                            <h3 class="h5 fw-semibold mb-2">Free Account</h3>
-                            <p class="text-muted mb-4">Basic access to explore the platform</p>
-                            <div class="display-4 fw-bold mb-4">$0</div>
-                            <ul class="list-unstyled mb-4">
-                                <li class="mb-3">
-                                    <div class="d-flex">
-                                        <i class="bi bi-check-circle-fill text-success me-2"></i>
-                                        <span class="text-muted">Browse host listings</span>
-                                    </div>
-                                </li>
-                                <li class="mb-3">
-                                    <div class="d-flex">
-                                        <i class="bi bi-check-circle-fill text-success me-2"></i>
-                                        <span class="text-muted">Create basic profile</span>
-                                    </div>
-                                </li>
-                                <li class="mb-3">
-                                    <div class="d-flex">
-                                        <i class="bi bi-x-circle-fill text-danger me-2"></i>
-                                        <span class="text-muted">Contact hosts</span>
-                                    </div>
-                                </li>
-                                <li class="mb-3">
-                                    <div class="d-flex">
-                                        <i class="bi bi-x-circle-fill text-danger me-2"></i>
-                                        <span class="text-muted">Messaging system</span>
-                                    </div>
-                                </li>
-                                <li class="mb-3">
-                                    <div class="d-flex">
-                                        <i class="bi bi-x-circle-fill text-danger me-2"></i>
-                                        <span class="text-muted">Verified profile badge</span>
-                                    </div>
-                                </li>
-                            </ul>
-                            <button class="btn btn-outline-secondary w-100 rounded-button">Sign Up Free</button>
-                        </div>
-                    </div>
-                </div>
                 <div class="col-lg-6">
                     <div class="card h-100 border-0 shadow-sm position-relative">
                         <div class="popular-badge">Most Popular</div>
@@ -472,7 +468,7 @@
                                     </div>
                                 </li>
                             </ul>
-                            <button class="btn btn-primary w-100 rounded-button">Join Now</button>
+                            <a href="payment.php"><button class="btn btn-primary w-100 rounded-button findHostButton">Join Now</button></a>
                         </div>
                     </div>
                 </div>
@@ -565,94 +561,13 @@
         </div>
     </section>
 
-    <!-- Testimonials Section -->
-    <section class="py-5 bg-light">
-        <div class="container">
-            <h2 class="text-center fw-bold mb-3">What Our Community Says</h2>
-            <p class="text-center text-muted mx-auto mb-5" style="max-width: 700px;">Real experiences from travelers and hosts who have connected through our platform.</p>
-            
-            <div class="row g-4">
-                <div class="col-md-4">
-                    <div class="card h-100 border-0 shadow-sm">
-                        <div class="card-body">
-                            <div class="d-flex align-items-center mb-4">
-                                <img src="https://readdy.ai/api/search-image?query=Portrait%20of%20a%20young%20female%20traveler%20with%20blonde%20hair%20and%20blue%20eyes%2C%20smiling%20naturally.%20She%20has%20a%20casual%2C%20adventurous%20look%20with%20slightly%20tanned%20skin%20from%20outdoor%20activities.%20The%20image%20is%20a%20close-up%20headshot%20with%20natural%20lighting%2C%20showing%20authenticity%20and%20friendliness.&width=100&height=100&seq=testi1&orientation=squarish" class="rounded-circle me-3 testimonial-img" alt="Traveler">
-                                <div>
-                                    <h5 class="mb-0 fw-semibold">Emma Richardson</h5>
-                                    <p class="small text-muted mb-0">Volunteer from Australia</p>
-                                </div>
-                            </div>
-                            <p class="card-text text-muted mb-4">"My three months at the organic farm in Portugal was life-changing. I learned sustainable farming techniques, improved my Portuguese, and made lifelong friends. The hosts treated me like family and showed me the authentic local culture you'd never experience as a tourist."</p>
-                            <div class="text-warning">
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card h-100 border-0 shadow-sm">
-                        <div class="card-body">
-                            <div class="d-flex align-items-center mb-4">
-                                <img src="https://readdy.ai/api/search-image?query=Portrait%20of%20a%20middle-aged%20Japanese%20woman%20with%20short%20black%20hair%20and%20glasses%2C%20smiling%20warmly.%20She%20has%20a%20gentle%2C%20welcoming%20expression%20and%20is%20wearing%20casual%20but%20neat%20clothing.%20The%20image%20is%20a%20close-up%20headshot%20with%20natural%20lighting%2C%20showing%20authenticity%20and%20kindness.&width=100&height=100&seq=testi2&orientation=squarish" class="rounded-circle me-3 testimonial-img" alt="Host">
-                                <div>
-                                    <h5 class="mb-0 fw-semibold">Yuki Tanaka</h5>
-                                    <p class="small text-muted mb-0">Host from Japan</p>
-                                </div>
-                            </div>
-                            <p class="card-text text-muted mb-4">"As a small ryokan owner in rural Japan, finding help was difficult until I discovered this platform. The volunteers have been amazing—helping with guest services while learning about Japanese culture. It's brought new energy to our community and helped us preserve traditional hospitality."</p>
-                            <div class="text-warning">
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-half"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card h-100 border-0 shadow-sm">
-                        <div class="card-body">
-                            <div class="d-flex align-items-center mb-4">
-                                <img src="https://readdy.ai/api/search-image?query=Portrait%20of%20a%20young%20Latino%20man%20with%20dark%20curly%20hair%20and%20brown%20eyes%2C%20with%20a%20friendly%20smile.%20He%20has%20a%20casual%2C%20relaxed%20appearance%20and%20is%20wearing%20a%20simple%20t-shirt.%20The%20image%20is%20a%20close-up%20headshot%20with%20natural%20lighting%2C%20showing%20authenticity%20and%20enthusiasm.&width=100&height=100&seq=testi3&orientation=squarish" class="rounded-circle me-3 testimonial-img" alt="Traveler">
-                                <div>
-                                    <h5 class="mb-0 fw-semibold">Miguel Hernandez</h5>
-                                    <p class="small text-muted mb-0">Volunteer from Mexico</p>
-                                </div>
-                            </div>
-                            <p class="card-text text-muted mb-4">"I spent six weeks helping at an eco-lodge in Costa Rica while improving my English. The experience was incredible—working with wildlife conservation projects, learning sustainable practices, and meeting people from around the world. I saved so much money while gaining valuable skills."</p>
-                            <div class="text-warning">
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- CTA Section -->
-    <section class="py-5 bg-primary text-white">
-        <div class="container text-center">
-            <h2 class="fw-bold mb-4">Ready to Start Your Cultural Exchange Journey?</h2>
-            <p class="mx-auto mb-5" style="max-width: 700px; opacity: 0.9;">Join thousands of travelers and hosts creating meaningful connections around the world.</p>
-            <div class="d-flex flex-wrap justify-content-center gap-3">
-                <button class="btn btn-light text-primary rounded-button px-4 py-2">Find Hosts</button>
-                <button class="btn btn-outline-light rounded-button px-4 py-2">Become a Host</button>
-            </div>
-        </div>
-    </section>
 
+    <?php
+    include 'footer.php'; // Include your footer file
+    ?>
     <!-- Footer -->
-    <footer class="bg-dark text-white pt-5 pb-4">
+    <!-- <footer class="bg-dark text-white pt-5 pb-4">
         <div class="container">
             <div class="row g-4 mb-5">
                 <div class="col-md-6 col-lg-3">
@@ -712,7 +627,7 @@
                 </div>
             </div>
         </div>
-    </footer>
+    </footer> -->
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>

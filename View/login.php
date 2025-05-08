@@ -12,7 +12,6 @@ include "../Model/register&login.php";
     <link rel="stylesheet" href="../css/style2.css">
 </head>
 <body>
-   
     <div class="container" id="signIn">
       <h1 class="form-title">Sign In</h1>
       <?php if (!empty($signIn)) { ?>
@@ -35,7 +34,7 @@ justify-content: center;"><?php echo $signIn; ?></p>
           <p class="recover">
             <a href="#">Recover Password</a>
           </p>
-         <input type="submit" class="btn" value="Sign In" name="signIn">
+          <input type="submit" class="btn" value="Sign In" name="signIn">
         </form>
         <p class="or">
           ----------or--------

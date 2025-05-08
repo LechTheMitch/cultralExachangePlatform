@@ -8,7 +8,7 @@ body {
 }
 
 .hero-section {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://readdy.ai/api/search-image?query=A%20beautiful%20panoramic%20scene%20showing%20cultural%20exchange%20between%20travelers%20and%20local%20hosts.%20The%20left%20side%20has%20a%20gradient%20that%20fades%20to%20a%20clean%20white%20background%20for%20text%20placement.%20The%20right%20side%20shows%20diverse%20people%20cooking%20together%20in%20a%20rustic%20kitchen%2C%20gardening%20in%20a%20lush%20setting%2C%20or%20sharing%20stories%20around%20a%20table.%20The%20image%20has%20warm%2C%20inviting%20colors%20with%20natural%20lighting.%20The%20scene%20conveys%20warmth%2C%20connection%2C%20and%20authentic%20cultural%20immersion.&width=1920&height=800&seq=hero123&orientation=landscape');
+    background-image: url('../images/1746713479beautiful-anime-landscape-cartoon-scene.jpg');
     background-size: cover;
     background-position: center;
     min-height: 600px;
@@ -92,4 +92,24 @@ body {
     padding: 0.25rem 1rem;
     font-size: 0.875rem;
     border-bottom-left-radius: 0.5rem;
+}
+.findHostButton {
+    background-color: green !important;
+    color: white !important;
+    border: 1px solid green !important;
+}
+.becomeHostButton {
+    background-color: transparent !important;
+    border: 1px solid green !important;
+    color: green !important;
+}
+.findHostButton:hover {
+    background-color: rgb(1, 98, 1) !important;
+    color: white !important;
+    border: 1px solid rgb(1, 98, 1) !important;
+}
+.becomeHostButton:hover {
+    background-color: white !important;
+    color: green !important;
+    border: 1px solid white !important;
 }
