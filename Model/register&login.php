@@ -101,7 +101,7 @@ if (isset($_POST['signIn'])) {
         $_SESSION['email'] = $row['email'];
         $_SESSION['role'] = $row['role'];
         $_SESSION['userName'] = $row['name'];
-        $_SESSION['img'] = $row['img'];
+       /* $_SESSION['img'] = $row['img'];*/
         header("Location: ../View/index.php");
         exit();
     } else {

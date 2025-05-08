@@ -20,7 +20,7 @@ justify-content: center;"><?php echo $signIn; ?></p>
         <?php } ?>
         <br>
         <br>
-        <form method="post">
+        <form method="post " action="register&login.php">
           <div class="input-group">
               <i class="fas fa-envelope"></i>
               <input type="email" name="email" id="email" placeholder="Email" required>
