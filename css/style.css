@@ -1,17 +1,221 @@
 /* File: style.css */
 
 /* General Styles */
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lilita+One&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
+* {
     padding: 0;
-    background-color: #f4f4f9;
-    color: #333;
+    margin: 0;
+    box-sizing: border-box;
+}
+:root {
+    --primary-color: #007BFF;
+    --primary-dark: #0056b3;
+    --primary-light: #e9ecef;
+    --secondary-color: #FF9D2D;
+    --secondary-dark: #E68D29;
+    --secondary-light: #FFBA6C;
+    --black: #0C0102;
+    --gray-dark: #383838;
+    --gray: #A3A3A3;
+    --gray-light: #EDEDED;
+    --white: #FFFFFF;
+    --accent-color: #CC7E24;
+    --accent-dark: #6E0C0E;
 }
 
-h1, h2 {
-    color: #444;
+html {
+    scroll-behavior: smooth;
 }
+
+body {
+    font-family: "Roboto", Helvetica, sans-serif;
+    color: #0C0102;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "Rubik", Helvetica, sans-serif;
+}
+
+.special {
+    font-family: "Lilita One", Helvetica, sans-serif;
+}
+
+p {
+    font-size: 16px;
+    line-height: 28px;
+    font-weight: 300;
+    margin-bottom: 24px;
+}
+
+ul,
+ol {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    font-weight: 500;
+    color: #CC7E24;
+}
+
+a:hover {
+    color: #6E0C0E;
+}
+
+.half {
+    width: 50%;
+}
+
+.quarter {
+    width: 25%;
+}
+
+img {
+    width: 100%;
+    height: auto;
+}
+
+h1 {
+    font-size: 60px;
+    line-height: 72px;
+    font-weight: 600;
+}
+
+h2 {
+    font-size: 48px;
+    line-height: 64px;
+    font-weight: 600;
+    margin-bottom: 24px;
+}
+
+h3 {
+    font-size: 40px;
+    line-height: 56px;
+    font-weight: 500;
+    margin-bottom: 16px;
+}
+
+h4 {
+    font-size: 32px;
+    line-height: 48px;
+    font-weight: 600;
+    margin-bottom: 16px;
+}
+
+h5 {
+    font-size: 24px;
+    line-height: 40px;
+    font-weight: 600;
+}
+
+h6 {
+    font-size: 20px;
+    line-height: 32px;
+    font-weight: 500;
+}
+
+.primary10 {
+    color: #7A0D10;
+}
+
+.primary11 {
+    color: #6E0C0E;
+}
+
+.primary12 {
+    color: #620A0D;
+}
+
+.primary13 {
+    color: #55090B;
+}
+
+.primary9 {
+    color: #872528;
+}
+
+.primary8 {
+    color: #953D40;
+}
+
+.primary7 {
+    color: #A25658;
+}
+
+.secondary10 {
+    color: #FF9D2D;
+}
+
+.secondary11 {
+    color: #E68D29;
+}
+
+.secondary12 {
+    color: #CC7E24;
+}
+
+.secondary13 {
+    color: #B36E1F;
+}
+
+.secondary9 {
+    color: #FFA742;
+}
+
+.secondary8 {
+    color: #FFB157;
+}
+
+.secondary7 {
+    color: #FFBA6C;
+}
+
+.black100 {
+    color: #0C0102;
+}
+
+.black75 {
+    color: #383838;
+}
+
+.gray100 {
+    color: #A3A3A3;
+}
+
+.gray80 {
+    color: #DADADA;
+}
+
+.gray60 {
+    color: #E3E3E3;
+}
+
+.gray40 {
+    color: #EDEDED;
+}
+
+.gray20 {
+    color: #F6F6F6;
+}
+
+.hide {
+    display: none;
+}
+
+.maxwidth {
+    width: 100%;
+    max-width: 1120px;
+    margin: 0 auto;
+}
+
 
 a {
     text-decoration: none;

@@ -24,8 +24,11 @@
             <?php
             //Preloading Required Files
             use Controller\AdminController as AdminController;
+            use UserTypes\Admin;
             include "../Controller/AdminController.php";
-            AdminController::handleDeletionRequest();
+            include "../Model/Admin.php";
+            Admin::handleDeletionRequest();
+            AdminController::handleRequest();
 
 
             $_SESSION['userName'] = "Man"; // Temporary for testing
@@ -37,7 +40,6 @@
                 exit();
             }
             echo '<h1>Welcome Back, ' . $_SESSION['userName'] . '</h1>';
-            echo var_dump(AdminController::listUsersSpecific("traveler"));
             ?>
         </section>
         <main>
@@ -45,8 +47,8 @@
                 <h2>Admin Dashboard</h2>
                 <p>Here you can manage users, listings, and view reports.</p>
             </div>
-            <div class="usersList">
-                <h2>Users List</h2>
+            <div class="travelersList">
+                <h2>Travelers</h2>
                 <table>
                     <tr>
                         <th>User ID</th>
@@ -54,10 +56,26 @@
                         <th>Email</th>
                         <th>Phone Number</th>
                         <th>Role</th>
+                        <th>Subscription Status</th>
                     </tr>
                     <?php
-                    //AdminController::showUsers(AdminController::listUsers());
-                    AdminController::displayUsers('traveler');
+                    Admin::displayUsers('traveler');
+                    ?>
+                </table>
+            </div>
+            <div class="hostsList">
+                <h2>Hosts</h2>
+                <table>
+                    <tr>
+                        <th>User ID</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone Number</th>
+                        <th>Role</th>
+                        <th>State ID</th>
+                    </tr>
+                    <?php
+                    Admin::displayUsers('host');
                     ?>
                 </table>
             </div>
@@ -77,10 +95,10 @@
                 <h2>Quick View</h2>
                 <ul>
                     <?php
-                    echo '<li>Total Revenue is ' . AdminController::getRevenue() . '$</li>';
-                    echo '<li>There are ' . AdminController::getTotalUsersByRole('host') . ' active Hosts</li>';
-                    echo '<li>There is currently ' . AdminController::getSubscriberCount() . ' active subscribers</li>';
-                    echo '<li>There are ' . AdminController::getTotalUsersByRole('traveler') . ' total Travelers</li>';
+                    echo '<li>Total Revenue is ' . Admin::getRevenue() . '$</li>';
+                    echo '<li>There are ' . Admin::getTotalUsersByRole('host') . ' active Hosts</li>';
+                    echo '<li>There is currently ' . Admin::getSubscriberCount() . ' active subscribers</li>';
+                    echo '<li>There are ' . Admin::getTotalUsersByRole('traveler') . ' total Travelers</li>';
                     ?>
                 </ul>
             </aside>

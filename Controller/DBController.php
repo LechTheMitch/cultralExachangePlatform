@@ -103,6 +103,18 @@ final class DBController
         $result->fetch_assoc();
         return explode("-", $result);
     }
+    public static function setProfileImage(string $image):void
+    {
+        $dbController = new DBController();
+        $dbController->openConnection();
+        $sql = "UPDATE user SET profileImage = ':image' WHERE id = {$_SESSION['currentID']}";
+        $stmt = $dbController->connection->prepare($sql);
+        $stmt->bind_param(':image', $image);
+        $stmt->execute();
+        $stmt->close();
+        $dbController->closeConnection();
+
+    }
     
 
 
