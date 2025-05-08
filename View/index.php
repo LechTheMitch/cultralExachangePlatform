@@ -168,8 +168,10 @@ session_start();
                             $detailsResult = $conn->query($details);
                             $details = $detailsResult->fetch_assoc();
 
-                            if($_SESSION["currentID"] == $row["id"]){ 
-                                continue; 
+                            if(isset($_SESSION["currentID"])){
+                                if($_SESSION["currentID"] == $row["id"]){ 
+                                    continue; 
+                                }
                             }
                             echo '<div class="col-md-6 col-lg-4">';
                             echo '<div class="card h-100 shadow-sm border-0 overflow-hidden">';

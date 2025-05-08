@@ -60,7 +60,7 @@
                             <a class="nav-link" href="./index.php">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Find Hosts</a>
+                            <a class="nav-link" href="./listing.php">Find Hosts</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="./chat.php">Messages</a>

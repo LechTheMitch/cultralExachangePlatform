@@ -79,7 +79,7 @@ mysqli_close($conn);
             <div class="row justify-content-center">
                 <!-- Image Section with Hover Effect -->
                 <div class="col-md-4 d-flex justify-content-center align-items-center mb-4 profile-image-container">
-                    <img src="../<?php echo $user['img'] ?>" alt="profileImage"
+                    <img src="<?php echo $_SESSION['img']; ?>" alt="profileImage"
                         class="img-fluid rounded-circle"
                         style="width: 80%; height: auto; aspect-ratio: 1 / 1; object-fit: cover;">
                 </div>
@@ -88,7 +88,7 @@ mysqli_close($conn);
                 <div class="col-md-7">
                     <!-- Name Section -->
                     <div class="row text-center mb-4 text-section">
-                        <h1 class="display-4 text-primary">~| <?php echo $user["name"] ?> |~</h1>
+                        <h1 class="display-4 text-primary"> <?php echo $user["name"] ?></h1>
                     </div>
 
                     <!-- Role and Title Section -->
