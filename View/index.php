@@ -20,56 +20,6 @@ session_start();
     
         include 'header.php';
     ?>
-    <!-- <header class="bg-white shadow-sm sticky-top">
-        <div class="container">
-            <nav class="navbar navbar-expand-lg py-3">
-                <div class="container-fluid">
-                    <a class="navbar-brand logo-font text-primary fs-3" href="#">CultureStay</a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarNav">
-                        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Home</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Find Hosts</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">My Profile</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Messages</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Help</a>
-                            </li>
-                        </ul>
-                        <div class="d-flex ms-lg-4">
-                            <div class="dropdown me-3">
-                                <button class="btn btn-link text-decoration-none dropdown-toggle" type="button" id="languageDropdown" data-bs-toggle="dropdown">
-                                    English
-                                </button>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#">Spanish</a></li>
-                                    <li><a class="dropdown-item" href="#">French</a></li>
-                                    <li><a class="dropdown-item" href="#">German</a></li>
-                                </ul>
-                            </div>
-                            <a href="./View/login.php">
-                            <button class="btn btn-outline-primary rounded-button me-2">Sign In</button>
-                            </a>
-                            <a href="./View/register.php">
-                            <button class="btn btn-primary rounded-button" >Register</button>
-                            </a>
-
-                        </div>
-                    </div>
-                </div>
-            </nav>
-        </div>
-    </header> -->
 
     <!-- Hero Section -->
     <section class="hero-section d-flex align-items-center text-white">
@@ -144,7 +94,7 @@ session_start();
                                         <option value="United Kingdom">United Kingdom</option>
                                         <option value="United States">United States</option>
                                         <option value="Morocco">Morocco</option>
-                                        <!-- Add more countries as needed -->
+                                       
                                     </select>
                                 </div>
                             </div>
@@ -486,7 +436,7 @@ session_start();
         </div>
     </section>
 
-    <!-- Trust & Safety Section -->
+    <!-- Trust & Safety Section
     <section class="py-5 bg-white">
         <div class="container">
             <h2 class="text-center fw-bold mb-3">Trust & Safety</h2>
@@ -559,7 +509,8 @@ session_start();
                 </ul>
             </div>
         </div>
-    </section>
+    </section> -->
+    
 
 
 
