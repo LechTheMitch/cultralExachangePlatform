@@ -7,7 +7,7 @@ if (!isset($_SESSION['currentID'])) {
     exit();
 }
 
-include '../Model/connect.php'; 
+include '../Model/connect.php';
 
 if (isset($_SESSION["currentID"])) {
     $travelerID = $_SESSION["currentID"];
@@ -20,6 +20,28 @@ if (isset($_SESSION["currentID"])) {
     $travelerData = $result->fetch_assoc();
 
 }
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['pay'])) {
+    // Collect payment details
+    $travelerID = $_POST['traveler_id'];
+    $cardNumber = $_POST['card_number'];
+    $expMonth = $_POST['exp_month'];
+    $expYear = $_POST['exp_year'];
+    $cvv = $_POST['cvv'];
+
+    // Include and use the DBController class
+    require_once '../Controller/DBController.php';
+    $dbController = new \Controller\DBController();
+
+    // Call the payNow function
+    $paymentStatus = $dbController->payNow($travelerID, $cardNumber);
+
+    if ($paymentStatus) {
+        echo "<script>alert('Payment successful!');</script>";
+    } else {
+        echo "<script>alert('Payment failed. Please try again.');</script>";
+    }
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -43,6 +65,11 @@ if (isset($_SESSION["currentID"])) {
             height: 100vh;
         }
 
+        .maxWidth {
+            width: 100%;
+            max-width: 1120px;
+            margin: 0 auto;
+        }
         /* Container */
         .wrapper {
             background: rgba(255, 255, 255, 0.9);
@@ -150,6 +177,7 @@ if (isset($_SESSION["currentID"])) {
     ?>
 
     <div class="wrapper">
+        <div class="maxWidth">
         <h2>Payment</h2>
 
         <?php if (isset($travelerData)): ?>
@@ -188,6 +216,7 @@ if (isset($_SESSION["currentID"])) {
             <p style="color:red;"></p>
         <?php endif; ?>
 
+    </div>
     </div>
 
     <?php include 'footer.php'; ?>

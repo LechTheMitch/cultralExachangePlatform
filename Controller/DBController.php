@@ -83,12 +83,12 @@ final class DBController
     public function filterUsersByCity($city, $role){
 
     }
-    public static function insertWithStyle($userID, $cardNumber, $expiryMonth, $expiryYear, $zipCode):bool
+    public static function payNow($userID, $cardNumber):bool
     {
         $dbController = new DBController();
         $dbController->openConnection();
-        $cardInformation = "$cardNumber-$expiryMonth-$expiryYear-$zipCode";
-        $sql = "INSERT INTO traveler WHERE id=$userID (cardInformation) VALUES ('$cardInformation')";
+        $cardInformation = "$cardNumber";
+        $sql = "UPDATE traveler SET cardInformation = '$cardInformation', isSubscribed = 1 WHERE id = $userID";
         $result = $dbController->connection->query($sql);
         $dbController->closeConnection();
         return $result;
