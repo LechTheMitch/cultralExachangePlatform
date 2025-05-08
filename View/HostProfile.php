@@ -26,7 +26,7 @@ mysqli_close($conn);
     <title>HostProfile</title>
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"> <!--for icons-->
-    <link rel="stylesheet" href="../css/host.css"> <!--for icons-->
+    <link rel="stylesheet" href="../css/host.css">
 </head>
 
 <body>
@@ -36,7 +36,7 @@ mysqli_close($conn);
     <!-- <header>
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#">Navbar</a>
+                <a class="navbar-brand" href="#">CulturalExchangeProject</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -115,9 +115,19 @@ mysqli_close($conn);
                     <div class="row mb-3 text-center text-item">
                         <h4><strong>Languages:</strong> <?php echo $host["spokenLanguages"] ?></h4>
                     </div>
+
+                    <!-- Update Button Section Should only be Visible If User himself is showing his profile (for later version) -->
+                    <div class="row justify-content-center mb-3">
+                        <a href="updateHost.php" class="btn">
+                            <i class="bi bi-pencil-fill me-2"></i>Update Profile
+                        </a>
+
+
+                    </div>
                 </div>
             </div>
         </div>
+
 
 
 
