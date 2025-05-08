@@ -40,13 +40,13 @@ class ChatHandler{
                 }
 
 
-                $output .= '<a href="#" class="user-item" data-id="' . $row['id'] . '" data-name="' . $row['name'] . '">
+                $output .= '<a href="#" class="user-item" data-id="' . $row['id'] . '" data-name="' . $row['name'] . '" data-image="'.$row['img'].'">
                                 <div class="content">
-                                    <img src="../images/download (3).jpg" alt="">
+                                    <img src="'.$row["img"].'" alt="">
                                     <div class="details">
                                         <span>'.$row['name'].'</span>
                                         <p>'.$msg.'</p>
-                                        <p class="message-time">'.$msgTime.'</p>
+                                        <p class="time">'.$msgTime.'</p>
                                     </div>
                                 </div>
                             </a>';
@@ -84,7 +84,7 @@ class ChatHandler{
 
                 $output .= '<a href="#" class="user-item" data-id="' . $row['id'] . '" data-name="' . $row['name'] . '">
                                 <div class="content">
-                                    <img src="../images/download (3).jpg" alt="">
+                                    <img src="'.$row["img"].'" alt="">
                                     <div class="details">
                                         <span>'.$row['name'].'</span>
                                         <p>'.$msg.'</p>
@@ -112,7 +112,7 @@ class ChatHandler{
                                 </div>';
                 }else{
                     $output .= '<div class="chat incoming">
-                                    <img src="../images/download (3).jpg" alt="">
+                                    <img src="'.$row["img"].'" alt="">
                                     <div class="details">
                                         <p>'.$row['content'].'</p>
                                     </div>

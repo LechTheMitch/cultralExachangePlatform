@@ -34,7 +34,7 @@
                 ?>
                 <a href="index.php" class="back-icon"><i class="fa-solid fa-arrow-left"></i></a>
                 <div class="content">
-                    <img src="../images/download (3).jpg" alt="">
+                    <img src="<?php echo $_SESSION['img']; ?>" alt="">
                     <div class="details">
                         <span><?php echo $row['name'] ?></span>
                     </div>
@@ -60,7 +60,7 @@
         <section class="chat-area">
             <header>
                 <div class="content">
-                    <img src="../images/download (3).jpg" alt="">
+                    <img src="" alt="">
                     <div class="details">
                         <span class="chat-username"></span>
                     </div>

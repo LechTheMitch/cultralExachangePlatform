@@ -100,7 +100,7 @@ mysqli_close($conn);
             <div class="row justify-content-center">
                 <!-- Profile Image -->
                 <div class="col-md-4 d-flex justify-content-center align-items-center mb-4 profile-image-container">
-                    <img src="../<?php echo $user['img'] ?>" alt="profileImage"
+                    <img src="<?php echo $_SESSION['img']; ?>" alt="profileImage"
                         class="img-fluid rounded-circle"
                         style="width: 80%; height: auto; aspect-ratio: 1 / 1; object-fit: cover;">
                 </div>

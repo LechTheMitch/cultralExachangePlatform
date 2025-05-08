@@ -73,7 +73,7 @@
                         <?php if (isset($_SESSION['userName'])): ?>
                             <div class="dropdown d-flex align-items-center">
                                 <button class="btn btn-link text-decoration-none dropdown-toggle text-primary d-flex align-items-center" type="button" id="profileDropdown" data-bs-toggle="dropdown">
-                                    <i class="bi bi-person-circle fs-4 me-2 text-primary"></i>
+                                    <img src="<?php echo $_SESSION["img"]; ?>" alt="Profile Image" class="rounded-circle me-2" style="width: 40px; height: 40px;">
                                     <span class="main-text"><?= htmlspecialchars($_SESSION['userName'], ENT_QUOTES, 'UTF-8') ?></span>
                                 </button>
                                 <ul class="dropdown-menu">

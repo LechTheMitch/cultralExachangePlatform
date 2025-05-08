@@ -59,7 +59,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
             // تغيير اسم المستخدم في الشات
             const userName = target.getAttribute("data-name");
+            const userImage = target.getAttribute("data-image");
+            console.log(userImage); // لعرض مسار الصورة في الـ Console
+
             document.querySelector(".chat-username").textContent = userName;
+            document.querySelector(".chat-area .content img").src = userImage;
 
             
             const userID = target.getAttribute("data-id");

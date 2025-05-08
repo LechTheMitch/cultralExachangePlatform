@@ -31,7 +31,7 @@
                 <?php echo $signUp; ?>
             </p>
         <?php } ?>
-        <form method="post" action="../Model/register&login.php">
+        <form method="post" action="../Model/register&login.php" enctype="multipart/form-data">
             <div class="input-group">
                 <i class="fas fa-user"></i>
                 <input type="text" name="name" id="fName" placeholder="Full Name" required>
@@ -51,6 +51,11 @@
                 <i class="fas fa-lock"></i>
                 <input type="password" name="password" id="password" placeholder="Password" required>
                 <label for="password">Password</label>
+            </div>
+            <div class="input-group">
+                <i class="fas fa-image"></i>
+                <input type="file" name="img">
+                <label for="img">Image</label>
             </div>
             <div id="skills" class="input-group" style="display: none;">
                 <i class="fas fa-award"></i>
