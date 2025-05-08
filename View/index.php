@@ -154,9 +154,6 @@ session_start();
             
             <div class="row g-4">
                 <?php
-                    
-                    
-                    
                     include '../Model/connect.php'; // Include your database connection file
                     
                     $query = "SELECT * FROM host ORDER BY country ASC LIMIT 3";
@@ -193,7 +190,6 @@ session_start();
                         echo '<p>No hosts found.</p>';
                     }
                     ?>
-           
         </div>
     </section>
 
