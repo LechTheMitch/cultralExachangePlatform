@@ -19,15 +19,6 @@ if (isset($_SESSION["currentID"])) {
     $result = $stmt->get_result();
     $travelerData = $result->fetch_assoc();
 
-    if ($travelerData) {
-        $names = explode(' ', $travelerData['name']);
-        $firstName = $names[0] ?? '';
-        $lastName = $names[1] ?? '';
-    } else {
-        echo "<p style='color:red;'>لا يوجد بيانات للمستخدم.</p>";
-    }
-} else {
-    echo "<p style='color:red;'>الرجاء تسجيل الدخول أولاً.</p>";
 }
 ?>
 
@@ -48,18 +39,16 @@ if (isset($_SESSION["currentID"])) {
         }
 
         body {
-            background: url('background.jpg') no-repeat center center/cover;
+            background-color: #f0f0f0 !important; /* Added a background color */
             height: 100vh;
-            padding: 20px;
         }
 
         /* Container */
-        .container {
+        .wrapper {
             background: rgba(255, 255, 255, 0.9);
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-            width: 50%;
             min-width: 400px;
             text-align: center;
         }
@@ -106,9 +95,9 @@ if (isset($_SESSION["currentID"])) {
 
         /* Focus Effect */
         .payment-form input:focus {
-            border-color: #007bff;
+            border-color: green;
             outline: none;
-            box-shadow: 0 0 3px #007bff88;
+            box-shadow: 0 0 3px green;
         }
 
         /* Style card info input */
@@ -119,7 +108,7 @@ if (isset($_SESSION["currentID"])) {
 
         /* Submit Button */
         .payment-form button {
-            background-color: #007bff;
+            background-color: green;
             color: white;
             padding: 10px;
             border: none;
@@ -131,7 +120,7 @@ if (isset($_SESSION["currentID"])) {
         }
 
         .payment-form button:hover {
-            background-color: #0056b3;
+            background-color: darkgreen;
         }
 
         /* Navigation Buttons */
@@ -141,23 +130,6 @@ if (isset($_SESSION["currentID"])) {
             margin-top: 20px;
         }
 
-        .home-btn,
-        .login-btn {
-            padding: 10px 15px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-            width: 48%;
-            background-color: #007bff;
-            color: white;
-            transition: background-color 0.3s ease;
-        }
-
-        .home-btn:hover,
-        .login-btn:hover {
-            background-color: #0056b3;
-        }
 
         /* Responsive Design */
         @media (max-width: 768px) {
@@ -168,16 +140,6 @@ if (isset($_SESSION["currentID"])) {
             .form-row {
                 flex-direction: column;
             }
-
-            .buttons {
-                flex-direction: column;
-                gap: 10px;
-            }
-
-            .home-btn,
-            .login-btn {
-                width: 100%;
-            }
         }
     </style>
 </head>
@@ -187,13 +149,12 @@ if (isset($_SESSION["currentID"])) {
         include 'header.php'; // Include the payment controller for processing payments
     ?>
 
-    <div class="container">
+    <div class="wrapper">
         <h2>Payment</h2>
 
         <?php if (isset($travelerData)): ?>
             <h3>Traveler Info</h3>
-            <p><strong>First Name:</strong> <?= htmlspecialchars($firstName) ?></p>
-            <p><strong>Last Name:</strong> <?= htmlspecialchars($lastName) ?></p>
+            <p><strong>UserName:</strong> <?= htmlspecialchars($travelerData['name']) ?></p>
             <p><strong>Email:</strong> <?= htmlspecialchars($travelerData['email']) ?></p>
 
             <form class="payment-form" method="post">
@@ -224,13 +185,9 @@ if (isset($_SESSION["currentID"])) {
                 <button type="submit" name="pay">Submit Payment</button>
             </form>
         <?php else: ?>
-            <p style="color:red;">الرجاء تسجيل الدخول أولاً.</p>
+            <p style="color:red;"></p>
         <?php endif; ?>
 
-        <div class="buttons">
-            <button onclick="location.href='home.html'" class="home-btn">Home</button>
-            <button onclick="location.href='login.html'" class="login-btn">Login</button>
-        </div>
     </div>
 
     <?php include 'footer.php'; ?>
