@@ -1,7 +1,11 @@
 <?php
+    session_start();
+    if(!isset($_SESSION['currentID'])){
+        header("Location: login.php");
+    }
     include("connect.php");
 
-    $user_id = $_SESSION['user_id'];
+    $user_id = $_SESSION['currentID'];
 
     /* based on the role of the user, you will be redirected to either host.php or traveler.php */
     $sql = "SELECT role FROM user WHERE id = $user_id";
@@ -9,11 +13,11 @@
     $result = mysqli_fetch_assoc($result); 
 
     if ($result['role'] == 'host') {
-        header("Location: HostProfile.php");
+        header("Location: ../View/HostProfile.php");
         exit();
     } 
     elseif ($result['role'] == 'traveler') {
-        header("Location: TravelerProfile.php");
+        header("Location: ../View/TravelerProfile.php");
         exit();
     }
     else if( $result['role'] == 'admin') {

@@ -50,7 +50,7 @@
     <div class="container">
         <nav class="navbar navbar-expand-lg py-3">
             <div class="container-fluid">
-                <a class="navbar-brand logo-font text-primary fs-3" href="../index.php">CultureStay</a>
+                <a class="navbar-brand logo-font text-primary fs-3" href="./index.php">CultureStay</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -77,7 +77,7 @@
                                     <span class="main-text"><?= htmlspecialchars($_SESSION['userName'], ENT_QUOTES, 'UTF-8') ?></span>
                                 </button>
                                 <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="../View/profile.php">My Profile</a></li>
+                                    <li><a class="dropdown-item" href="../Model/profileController.php">My Profile</a></li>
                                     <li><a class="dropdown-item" href="../Model/logout.php">Logout</a></li>
                                 </ul>
 
