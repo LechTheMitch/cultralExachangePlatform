@@ -1,5 +1,4 @@
 <?php
-include("register&login.php");
 
 ?>
 <!DOCTYPE html>
@@ -8,20 +7,21 @@ include("register&login.php");
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register & Login</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="style2.css">
+    <link rel="stylesheet" href="../css/all.min.css">
+    <link rel="stylesheet" href="../css/style2.css">
 </head>
 <body>
-   
     <div class="container" id="signIn">
       <h1 class="form-title">Sign In</h1>
-      <?php if (!empty($signIn)) { ?>
-          <p class="error" style="color: red;display: flex;
-justify-content: center;"><?php echo $signIn; ?></p>
-        <?php } ?>
+
+          <?php 
+          if (isset($signIn)) {
+              echo '<p class="error" style="color: red;display: flex; justify-content: center;">Incorrect Email or Password</p>';
+          }
+          ?>
         <br>
         <br>
-        <form method="post"  >
+        <form method="post" action="../Model/loginController.php">
           <div class="input-group">
               <i class="fas fa-envelope"></i>
               <input type="email" name="email" id="email" placeholder="Email" required>
@@ -35,7 +35,7 @@ justify-content: center;"><?php echo $signIn; ?></p>
           <p class="recover">
             <a href="#">Recover Password</a>
           </p>
-         <input type="submit" class="btn" value="Sign In" name="signIn">
+          <input type="submit" class="btn" value="Sign In" name="signIn">
         </form>
         <p class="or">
           ----------or--------
@@ -49,6 +49,6 @@ justify-content: center;"><?php echo $signIn; ?></p>
           <button id="signUpButton"><a href="register.php">Sign Up</a></button>
         </div>
       </div>
-      <script src="script2.js"></script>
+      <script src="../js/script2.js"></script>
 </body>
 </html>

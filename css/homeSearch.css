@@ -1,0 +1,65 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f2f4f8;
+  }
+  
+  header {
+    background-color: #34495e;
+    color: white;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .host-list {
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .host-card {
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transition: transform 0.2s ease;
+  }
+  
+  .host-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .host-info h2 {
+    margin: 0 0 10px;
+    color: #2c3e50;
+  }
+  
+  .host-info p {
+    margin: 5px 0;
+    color: #555;
+  }
+  
+  button {
+    margin-top: 10px;
+    padding: 8px 16px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #2980b9;
+  }
+  
+  .no-result {
+    text-align: center;
+    font-size: 1.2em;
+    color: #999;
+  }
+  

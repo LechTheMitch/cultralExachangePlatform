@@ -23,12 +23,11 @@ if(isset($_POST['submit'])){
     $Category=$_POST['Category'];
     $Learning_Opportunities=$_POST['Learning_Opportunities'];
     $SpokenLanguages=$_POST['SpokenLanguages'];
-    $CardInformation=$_POST['CardInformation'];
 
-        $insertQuery="INSERT INTO host(id,description,accommodation,country,requiredHelp,title,stateID,datesAvailable,category,learningOpportunities,spokenLanguages,cardInformation)
-                       VALUES ('$userId','$Description','$Accommodation','$Country','$RequiredHelp','$Title','$State_ID','$Dates_Available','$Category','$Learning_Opportunities','$SpokenLanguages','$CardInformation')";
+        $insertQuery="INSERT INTO host(id,description,accommodation,country,requiredHelp,title,stateID,datesAvailable,category,learningOpportunities,spokenLanguages)
+                       VALUES ('$userId','$Description','$Accommodation','$Country','$RequiredHelp','$Title','$State_ID','$Dates_Available','$Category','$Learning_Opportunities','$SpokenLanguages')";
             if($conn->query($insertQuery)==TRUE){
-                header("location: homepage.php");
+                header("location: ../View/index.php");
             }
             else{
                 $signUp = "Error:".$conn->error;

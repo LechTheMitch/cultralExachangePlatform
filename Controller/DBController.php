@@ -3,15 +3,15 @@
 
 namespace Controller;
 use mysqli;
-require_once("../database/homestays_and_cultural_exchange.sql");
 
-class DBController
+
+final class DBController
 {
     private $dbServer = "localhost";
     private $dbUser = "root";
     private $dbPass = "";
     private $dbName = "homestays_and_cultural_exchange";
-    public $connection;
+    public mysqli $connection;
 
     //TODO
     public function openConnection(): bool
@@ -35,7 +35,7 @@ class DBController
         }
         else
         {
-            echo "Connection is not opened";
+            echo "Connection is not open";
             return false;
         }
     }
@@ -45,12 +45,78 @@ class DBController
     public function getConnection(){
         return $this->connection;
     }
-    public function getUserData($user_id)
+    public function getUserById($user_id)
     {
-        $sql = "SELECT name FROM user WHERE id = $user_id";
+        $sql = "SELECT * FROM user WHERE id = $user_id";
         $result = $this->connection->query($sql);
         return $result->fetch_assoc();
     }
+    public function getUserByEmail($email)
+    {
+        $sql = "SELECT * FROM user WHERE email = '$email'";
+        $result = $this->connection->query($sql);
+        if ($result->num_rows > 0) {
+            return $result->fetch_assoc();
+        } else {
+            return null;
+        }
+    }
+    public function getUserByUsername($username){
+        $sql = "SELECT * FROM user WHERE username = '$username'";
+        $result = $this->connection->query($sql);
+        if ($result->num_rows > 0) {
+            return $result->fetch_assoc();
+        } else {
+            return null;
+        }
+    }
+    public function filterUsersByCountry($country, $role)
+    {
+        $sql = "SELECT * FROM user WHERE country = '$country' AND role = '$role'";
+        $result = $this->connection->query($sql);
+        if ($result->num_rows > 0) {
+            return $result->fetch_all(MYSQLI_ASSOC);
+        } else {
+            return null;
+        }
+    }
+    public function filterUsersByCity($city, $role){
+
+    }
+    public static function payNow($userID, $cardNumber):bool
+    {
+        $dbController = new DBController();
+        $dbController->openConnection();
+        $cardInformation = "$cardNumber";
+        $sql = "UPDATE traveler SET cardInformation = '$cardInformation', isSubscribed = 1, dateSubscribed=CURRENT_TIMESTAMP() WHERE id = $userID";
+        $result = $dbController->connection->query($sql);
+        $dbController->closeConnection();
+        return $result;
+    }
+    public static function retrieveWithStyle($userID):array
+    {
+        $dbController = new DBController();
+        $dbController->openConnection();
+        $sql = "SELECT cardInformation FROM traveler WHERE id = $userID";
+        $result = $dbController->connection->query($sql);
+        $dbController->closeConnection();
+        $result->fetch_assoc();
+        return explode("-", $result);
+    }
+    public static function setProfileImage(string $image):void
+    {
+        $dbController = new DBController();
+        $dbController->openConnection();
+        $sql = "UPDATE user SET profileImage = ':image' WHERE id = {$_SESSION['currentID']}";
+        $stmt = $dbController->connection->prepare($sql);
+        $stmt->bind_param(':image', $image);
+        $stmt->execute();
+        $stmt->close();
+        $dbController->closeConnection();
+
+    }
+    
+
 
 }
 ?>

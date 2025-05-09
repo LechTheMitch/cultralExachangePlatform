@@ -13,6 +13,33 @@ if (isset($_POST['signUp'])) {
     $role = $conn->real_escape_string($_POST['role']);
     $Skills = isset($_POST['Skills']) ? $conn->real_escape_string($_POST['Skills']) : '';
 
+    if (isset($_FILES['img']) && $_FILES['img']['error'] === UPLOAD_ERR_OK) {// when user upload image
+        $imgName = $_FILES['img']['name'];
+        $imgTempName = $_FILES['img']['tmp_name'];
+        $time = time();
+        $newImgName = $time . $imgName; 
+        $imgTargetFolder = "../images/" . $newImgName; 
+
+        $imgExplode = explode('.', $imgName);
+        $imgExt = end($imgExplode);
+
+        $extensions = ['jpg', 'jpeg', 'png'];
+
+        if (in_array($imgExt, $extensions)) {
+
+            if (move_uploaded_file($imgTempName, $imgTargetFolder)) {
+            } else {   
+                $signUp = "Failed to upload image!";
+            }
+        }else {
+            $signUp = "Invalid Image Format!";
+        }
+
+    } else { // if user does not upload image then default image will be used
+        $imgTargetFolder = "../images/default.jpg" ;
+    }
+
+
     $checkEmail = "SELECT * FROM user WHERE email='$email'";
     $result = $conn->query($checkEmail);
     
@@ -22,8 +49,8 @@ if (isset($_POST['signUp'])) {
         $conn->begin_transaction();
         
         try {
-            $insertQuery = "INSERT INTO user (name, phone_number, email, password, role)
-                          VALUES ('$firstName', '$phone_number', '$email', '$password', '$role')";
+            $insertQuery = "INSERT INTO user (name, phone_number, email, password, role, img)
+                            VALUES ('$firstName', '$phone_number', '$email', '$password', '$role', '$imgTargetFolder')";
             
             if (!$conn->query($insertQuery)) {
                 throw new Exception("Error in user registration: " . $conn->error);
@@ -41,14 +68,16 @@ if (isset($_POST['signUp'])) {
             
             $conn->commit();
             
-            $_SESSION['user_id'] = $userId;
+            $_SESSION['currentID'] = $userId;
             $_SESSION['email'] = $email;
             $_SESSION['role'] = $role;
+            $_SESSION['userName'] = $firstName;
+            $_SESSION['img'] = $imgTargetFolder;
             
             if ($role == 'Host') {
-                header("Location: hostInfo.php");
+                header("Location: ../View/hostInfo.php");
             } else {
-                header("Location: homepage.php");
+                header("Location: ../View/index.php");
             }
             exit();
             
@@ -57,7 +86,7 @@ if (isset($_POST['signUp'])) {
             $signUp = $e->getMessage();
         }
     }
-}
+
 
 if (isset($_POST['signIn'])) {
     $email = $conn->real_escape_string($_POST['email']);
@@ -68,13 +97,16 @@ if (isset($_POST['signIn'])) {
     
     if ($result->num_rows > 0) {
         $row = $result->fetch_assoc();
-        $_SESSION['user_id'] = $row['id'];
+        $_SESSION['currentID'] = $row['id'];
         $_SESSION['email'] = $row['email'];
         $_SESSION['role'] = $row['role'];
-        header("Location: homepage.php");
+        $_SESSION['userName'] = $row['name'];
+       /* $_SESSION['img'] = $row['img'];*/
+        header("Location: ../View/index.php");
         exit();
     } else {
         $signIn = "Incorrect Email or Password";
     }
+}
 }
 ?>

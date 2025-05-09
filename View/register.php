@@ -1,4 +1,6 @@
-<?php include("register&login.php"); ?>
+<?php 
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register & Login</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="style2.css">
+    <link rel="stylesheet" href="../css/style2.css">
     <style>
         .input-group select {
             width: 100%;
@@ -31,7 +33,7 @@
                 <?php echo $signUp; ?>
             </p>
         <?php } ?>
-        <form method="post" action="register&login.php">
+        <form method="post" action="../Model/registerController.php" enctype="multipart/form-data">
             <div class="input-group">
                 <i class="fas fa-user"></i>
                 <input type="text" name="name" id="fName" placeholder="Full Name" required>
@@ -51,6 +53,11 @@
                 <i class="fas fa-lock"></i>
                 <input type="password" name="password" id="password" placeholder="Password" required>
                 <label for="password">Password</label>
+            </div>
+            <div class="input-group">
+                <i class="fas fa-image"></i>
+                <input type="file" name="img">
+                <label for="img">Image</label>
             </div>
             <div id="skills" class="input-group" style="display: none;">
                 <i class="fas fa-award"></i>

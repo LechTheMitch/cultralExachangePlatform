@@ -1,0 +1,80 @@
+/* Hover effect for the container */
+.profile-container:hover {
+    transform: scale(1.02);
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+}
+
+/* Hover effect for image */
+.profile-image-container:hover {
+    transform: scale(1.1);
+    transition: all 0.3s ease-in-out;
+}
+
+/* Hover effect for text rows */
+.text-section:hover {
+    background-color: #e0e0e0;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Hover effect for individual text items */
+.text-item:hover {
+    color: #007bff;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.hover-box {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.hover-box:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.contact-box {
+    transition: transform 0.3s ease, filter 0.3s ease;
+    cursor: pointer;
+}
+
+.contact-box:hover {
+    transform: scale(1.03);
+    filter: brightness(1.1);
+}
+
+/* Update Button Styles */
+.btn {
+    background-color: #6b705c;
+    color: white;
+    padding: 12px 30px;
+    border-radius: 30px;
+    font-size: 18px;
+    transition: background-color 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-weight: bold;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.btn:hover {
+    background-color: #588157; /* Lighter shade for hover */
+    color: white;
+}
+
+.btn i {
+    margin-right: 8px; /* Space between icon and text */
+}
+
+/* Add responsive design for buttons */
+@media (max-width: 576px) {
+    .btn {
+        padding: 10px 20px;
+        font-size: 16px;
+    }
+}
+

@@ -14,11 +14,14 @@ roleElement.addEventListener('change', function() {
         skills.style.display = 'none';
     }
 });
-<<<<<<< HEAD
+// <<<<<<< HEAD
+// <<<<<<< HEAD
 
-=======
+// =======
 //
->>>>>>> d20709c75ec9fddd697cfad75cc6e51e85a77281
+// >>>>>>> d20709c75ec9fddd697cfad75cc6e51e85a77281
+// =======
+// >>>>>>> 99f00ee4db1fa297a5d15a331bedd1153aff729f
 // signUpButton.addEventListener('click',function(){
 //     signInForm.style.display="none";
 //     signUpForm.style.display="block";
