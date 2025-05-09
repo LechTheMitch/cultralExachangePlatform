@@ -88,7 +88,7 @@ final class DBController
         $dbController = new DBController();
         $dbController->openConnection();
         $cardInformation = "$cardNumber";
-        $sql = "UPDATE traveler SET cardInformation = '$cardInformation', isSubscribed = 1 WHERE id = $userID";
+        $sql = "UPDATE traveler SET cardInformation = '$cardInformation', isSubscribed = 1, dateSubscribed=CURRENT_TIMESTAMP() WHERE id = $userID";
         $result = $dbController->connection->query($sql);
         $dbController->closeConnection();
         return $result;

@@ -1,4 +1,7 @@
 <?php
+
+use Controller\DBController;
+
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
@@ -21,18 +24,13 @@ if (isset($_SESSION["currentID"])) {
 
 }
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['pay'])) {
-    // Collect payment details
     $travelerID = $_POST['traveler_id'];
     $cardNumber = $_POST['card_number'];
     $expMonth = $_POST['exp_month'];
     $expYear = $_POST['exp_year'];
     $cvv = $_POST['cvv'];
-
-    // Include and use the DBController class
     require_once '../Controller/DBController.php';
-    $dbController = new \Controller\DBController();
-
-    // Call the payNow function
+    $dbController = new DBController();
     $paymentStatus = $dbController->payNow($travelerID, $cardNumber);
 
     if ($paymentStatus) {
@@ -175,7 +173,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['pay'])) {
 
 <body>
     <?php 
-        include 'header.php'; // Include the payment controller for processing payments
+        include 'header.php';
     ?>
 
     <div class="wrapper">
