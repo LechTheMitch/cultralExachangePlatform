@@ -37,7 +37,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['pay'])) {
 
     if ($paymentStatus) {
         echo "<script>alert('Payment successful!');</script>";
-        header("Location: index.php");
+        echo "<script>window.location.href = 'index.php';</script>";
+        exit();
     } else {
         echo "<script>alert('Payment failed. Please try again.');</script>";
     }
