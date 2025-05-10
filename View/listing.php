@@ -11,7 +11,9 @@
         <?php include 'header.php'; ?> <!-- Include the header -->
 
         <h2 class="text-center fw-bold mb-5 my-5">Featured Hosts</h2>
-        <?php include '../Model/listingController.php'; ?> <!-- Include the listing controller -->
+        <div class="row g-4 ms-3 me-5">
+            <?php include '../Model/listingController.php'; ?> <!-- Include the listing controller -->
+        </div>
 
         <?php include 'footer.php'; ?> <!-- Include the footer -->
 </body>
