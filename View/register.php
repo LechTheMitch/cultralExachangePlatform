@@ -41,7 +41,7 @@
             </div>
             <div class="input-group">
                 <i class="fas fa-phone"></i>
-                <input type="text" name="phone_number" id="phone_number" placeholder="Phone Number" required>
+                <input type="tel" name="phone_number" pattern="[0-9]{10}" maxlength="16" id="phone_number" placeholder="Phone Number" required>
                 <label for="phone_number">Phone Number</label>
             </div>
             <div class="input-group">

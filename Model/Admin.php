@@ -6,6 +6,7 @@ use Controller\DBController;
 require_once("../Controller/DBController.php");
 final class Admin
 {
+    const SUBSCIPTIONPRICE = 49;
     public static function showUsers($users): void
     {
         foreach ($users as $user) {
@@ -67,12 +68,13 @@ final class Admin
     }
     public static function getRevenue() : int
     {
-        $revenue = 60 * self::getSubscriberCount();;
+        $revenue = self::SUBSCIPTIONPRICE * self::getSubscriberCount();;
         return $revenue;
     }
     public static function generateRevenueReport(){
-        $pdf=0;
-        $revenue = 60 * self::getSubscriberCount();
+        $pdf = new \FPDF();
+        $revenue = self::getRevenue();
+        //TODO
         return $pdf;
     }
     public static function deleteListing($listingID):bool

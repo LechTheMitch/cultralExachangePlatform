@@ -21,87 +21,82 @@
             </div>
         </header>
         <section class="hero">
-            <?php
-            session_start();
-            //Preloading Required Files
-            use Controller\AdminController as AdminController;
-            use UserTypes\Admin;
-            include "../Controller/AdminController.php";
-            include "../Model/Admin.php";
-            Admin::handleDeletionRequest();
-            AdminController::handleRequest();
+            <div class="maxWidth hero-content">
+                <?php
+                session_start();
+                //Preloading Required Files
+                use Controller\AdminController as AdminController;
+                use UserTypes\Admin;
+                include "../Controller/AdminController.php";
+                include "../Model/Admin.php";
+                Admin::handleDeletionRequest();
+                //AdminController::handleRequest();
 
 
-            $_SESSION['role'] = "admin"; // Temporary for testing
-            if (!isset($_SESSION['userName']) || $_SESSION['role'] != 'admin') {
-                echo '<script>window.alert("You are not authorized to view this page.");</script>';
-                sleep(3);
-                header("Location: login.php");
-                exit();
-            }
-            echo '<h1>Welcome Back, ' . $_SESSION['userName'] . '</h1>';
-            ?>
+                $_SESSION['userName'] = "Admin"; // Temporary for testing
+                $_SESSION['role'] = "admin"; // Temporary for testing
+                if (!isset($_SESSION['userName']) || $_SESSION['role'] != 'admin') {
+                    echo '<script>window.alert("You are not authorized to view this page.");</script>';
+                    sleep(3);
+                    header("Location: login.php");
+                    exit();
+                }
+                echo '<h1 class="black100">Welcome Back, <br> <span class="primary10">' . $_SESSION['userName'] . '</span> </h1>';
+                ?>
+                <aside>
+                    <h3 class="primary11">Quick View</h3>
+                    <ul>
+                        <?php
+                        echo '<li>Revenue<span class="primary11">' . Admin::getRevenue() . '$</span></li>';
+                        echo '<li>Hosts<span class="primary11">' . Admin::getTotalUsersByRole('host') . '</span></li>';
+                        echo '<li>Subscribers<span class="primary11">' . Admin::getSubscriberCount() . '</span></li>';
+                        echo '<li>Travelers<span class="primary11">' . Admin::getTotalUsersByRole('traveler') . '</span></li>';
+                        ?>
+                    </ul>
+                </aside>
+            </div>
         </section>
-        <main>
-            <div class="hero-text">
-                <h2>Admin Dashboard</h2>
-                <p>Here you can manage users, listings, and view reports.</p>
+        <main class="maxWidth">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h2>Admin Dashboard</h2>
+                    <p>Here you can manage users, listings, and view reports.</p>
+                </div>
             </div>
-            <div class="travelersList">
-                <h2>Travelers</h2>
-                <table>
-                    <tr>
-                        <th>User ID</th>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Phone Number</th>
-                        <th>Role</th>
-                        <th>Subscription Status</th>
-                    </tr>
-                    <?php
-                    Admin::displayUsers('traveler');
-                    ?>
-                </table>
+            <div class="usersList">
+                <div class="travelersList">
+                    <h2>Travelers</h2>
+                    <table>
+                        <tr>
+                            <th>User ID</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Phone Number</th>
+                            <th>Role</th>
+                            <th>Subscription Status</th>
+                        </tr>
+                        <?php
+                        Admin::displayUsers('traveler');
+                        ?>
+                    </table>
+                </div>
+                <div class="hostsList">
+                    <h2>Hosts</h2>
+                    <table>
+                        <tr>
+                            <th>User ID</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Phone Number</th>
+                            <th>Role</th>
+                            <th>State ID</th>
+                        </tr>
+                        <?php
+                        Admin::displayUsers('host');
+                        ?>
+                    </table>
+                </div>
             </div>
-            <div class="hostsList">
-                <h2>Hosts</h2>
-                <table>
-                    <tr>
-                        <th>User ID</th>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Phone Number</th>
-                        <th>Role</th>
-                        <th>State ID</th>
-                    </tr>
-                    <?php
-                    Admin::displayUsers('host');
-                    ?>
-                </table>
-            </div>
-            <div class="filters">
-                <h2>Filters</h2>
-                <form method="post">
-                    <label for="role">Role:</label>
-                    <select name="role" id="role">
-                        <option value="">All</option>
-                        <option value="host">Host</option>
-                        <option value="traveler">Traveler</option>
-                    </select>
-                    <input type="submit" name="filter" value="Filter">
-                </form>
-            </div>
-            <aside>
-                <h2>Quick View</h2>
-                <ul>
-                    <?php
-                    echo '<li>Total Revenue is ' . Admin::getRevenue() . '$</li>';
-                    echo '<li>There are ' . Admin::getTotalUsersByRole('host') . ' active Hosts</li>';
-                    echo '<li>There is currently ' . Admin::getSubscriberCount() . ' active subscribers</li>';
-                    echo '<li>There are ' . Admin::getTotalUsersByRole('traveler') . ' total Travelers</li>';
-                    ?>
-                </ul>
-            </aside>
         </main>
 
 
