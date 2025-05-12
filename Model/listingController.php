@@ -18,8 +18,8 @@
                 continue;
             }
 
-            // تحديد صفحة البروفايل حسب الدور
-            $profilePage = "../View/" . (($details['role'] === 'traveler') ? 'travelerProfile.php' : 'hostProfile.php');
+            // // تحديد صفحة البروفايل حسب الدور
+            // $profilePage = "../View/" . (($details['role'] === 'traveler') ? 'travelerProfile.php' : 'hostProfile.php');
 
             echo '<div class="col-md-6 col-lg-4">';
             echo '<div class="card h-100 shadow-sm border-0 overflow-hidden">';
@@ -33,7 +33,7 @@
             echo '<p class="card-text text-muted small">' . htmlspecialchars($row['description']) . '</p>';
 
             // فورم للذهاب إلى صفحة البروفايل
-            echo '<form action="' . $profilePage . '" method="POST">';
+            echo '<form action= "hostProfile.php" method="POST">';
             echo '<input type="hidden" name="user_id" value="' . $row["id"] . '">';
             echo '<button type="submit" class="btn btn-link text-primary fw-medium small p-0 m-0">View Details</button>';
             echo '</form>';
