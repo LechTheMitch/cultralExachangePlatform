@@ -1,0 +1,18 @@
+Use Case Implementation Strategy
+In our project, we adopted the Use-Case Class Strategy to implement the system’s functionality. This strategy involves creating a dedicated controller class for each main use case. For example:
+
+The MessageController handles sending and receiving messages.
+
+This approach offers several advantages:
+
+✅ Modularity: Each use case is encapsulated in its own controller class, making the system easier to understand and maintain.
+
+✅ Testability: Logic for each function can be tested independently.
+
+✅ Scalability: New use cases can be added with minimal impact on the existing code.
+
+✅ Separation of Concerns: Responsibilities are clearly separated between Views, Controllers, and Models (following the MVC pattern).
+
+However, a potential drawback of this strategy is that it can increase the number of classes, leading to some complexity in managing the codebase. Also, similar functionality (like validation or data formatting) may be duplicated across multiple use-case classes if not abstracted properly.
+
+Despite these concerns, the Use-Case Class Strategy was the most appropriate for our platform because of the clear mapping between system features and user actions, and the need to keep responsibilities well-organized and isolated.
