@@ -159,7 +159,7 @@ session_start();
 
                     $query = "SELECT * FROM host ORDER BY country ASC LIMIT 3";
                     $result = $conn->query($query);
-                    
+                  
 
                     if ($result->num_rows > 0) {
                         while ($row = $result->fetch_assoc()) {
