@@ -39,7 +39,7 @@ $result = mysqli_query($conn, $sql);
         while ($row = $result->fetch_assoc()) {
         
 
-            // تجاهل المستخدم الحالي
+            
             if (isset($_SESSION["currentID"]) && $_SESSION["currentID"] == $row["id"]) {
                 continue;
             }
