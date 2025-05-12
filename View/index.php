@@ -167,7 +167,7 @@ session_start();
                             $detailsResult = $conn->query($detailsQuery);
                             $details = $detailsResult->fetch_assoc();
 
-                            // تجاهل المستخدم الحالي
+                           
                             if (isset($_SESSION["currentID"]) && $_SESSION["currentID"] == $row["id"]) {
                                 continue;
                             }
@@ -185,7 +185,7 @@ session_start();
                             echo '<p class="card-text text-muted small"><i class="bi bi-geo-alt"></i> ' . htmlspecialchars($row['country']) . '</p>';
                             echo '<p class="card-text text-muted small">' . htmlspecialchars($row['description']) . '</p>';
 
-                            // فورم للذهاب إلى صفحة البروفايل
+                           
                             echo '<form action= "hostProfile.php" method="POST">';
                             echo '<input type="hidden" name="user_id" value="' . $row["id"] . '">';
                             echo '<button type="submit" class="btn btn-link text-primary fw-medium small p-0 m-0">View Details</button>';
@@ -229,9 +229,7 @@ session_start();
                     <p class="text-muted">Confirm details with your host, plan your journey, and embark on your cultural exchange adventure. Help with agreed tasks in exchange for accommodation.</p>
                 </div>
             </div>
-            <div class="text-center mt-5">
-                <a href="register.php"></a><button class="btn btn-primary rounded-button px-4 py-3 findHostButton">Get Started Today</button></a>
-            </div>
+          
         </div>
     </section>
 
@@ -306,31 +304,7 @@ session_start();
     ?>
  
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- <script>
-        document.addEventListener('DOMContentLoaded', function() {
-         
-            var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
-            var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
-                return new bootstrap.Tooltip(tooltipTriggerEl);
-            });
-            
-           
-            const menuButton = document.querySelector('.navbar-toggler');
-            if (menuButton) {
-                menuButton.addEventListener('click', function() {
-                    console.log('Menu clicked');
-                });
-            }
-            
-           
-            const filterButton = document.querySelector('button.text-primary.text-sm.font-medium.flex.items-center');
-            if (filterButton) {
-                filterButton.addEventListener('click', function() {
-                    console.log('Filter clicked');
-                });
-            }
-        });
-    </script> -->
+   
     
     
 <script>
