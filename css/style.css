@@ -224,22 +224,19 @@ nav{
     background: linear-gradient(to right, var(--secondary-white), var(--secondary7));
 }
 nav ul{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 16px 0;
+    display: none;
 }
 .hero{
     background: linear-gradient(to right, var(--secondary-white), var(--secondary7));
-    min-height: 400px;
+    min-height: 500px;
 }
 .hero-content{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items: start;
+    align-items: center;
     text-align: left;
-    padding: 16px 0;
+    padding: 64px 0;
 }
 aside{
     text-align: center;
@@ -317,4 +314,11 @@ table tr:nth-child(1) {
 
 table tr td:last-child {
     border-right: none;
+}
+nav a{
+    font-weight: 500;
+    padding: 16px;
+    display: block;
+    color: var(--white100);
+    background: var(--primary11);
 }

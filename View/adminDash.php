@@ -17,6 +17,7 @@
                         <li><a href="revenueReport.php">Revenue Report</a></li>
                         <li><a href="logout.php">Logout</a></li>
                     </ul>
+                    <a href="../Model/logout.php" class="logout">Logout</a>
                 </nav>
             </div>
         </header>
@@ -33,8 +34,6 @@
                 //AdminController::handleRequest();
 
 
-                $_SESSION['userName'] = "Admin"; // Temporary for testing
-                $_SESSION['role'] = "admin"; // Temporary for testing
                 if (!isset($_SESSION['userName']) || $_SESSION['role'] != 'admin') {
                     echo '<script>window.alert("You are not authorized to view this page.");</script>';
                     sleep(3);
@@ -57,12 +56,6 @@
             </div>
         </section>
         <main class="maxWidth">
-            <div class="hero-content">
-                <div class="hero-text">
-                    <h2>Admin Dashboard</h2>
-                    <p>Here you can manage users, listings, and view reports.</p>
-                </div>
-            </div>
             <div class="usersList">
                 <div class="travelersList">
                     <h2>Travelers</h2>
