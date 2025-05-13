@@ -14,6 +14,7 @@ session_start();
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/home.css">
+    
 </head>
 <body>
     <?php 
@@ -21,7 +22,7 @@ session_start();
         include 'header.php';
     ?>
 
-    <!-- Hero Section -->
+ 
     <section class="hero-section d-flex align-items-center text-white">
         <div class="container py-5">
             <div class="row">
@@ -52,7 +53,7 @@ session_start();
     </section>
     
 
-<!-- Search & Filter Section -->
+
 <section class="py-5 bg-white">
     <form action="../Model/homeSearch.php" method="post">
         <div class="container">
@@ -61,7 +62,7 @@ session_start();
                     <h2 class="text-center fw-bold mb-5">Find Your Perfect Cultural Exchange</h2>
                     <div class="bg-white shadow-lg rounded-3 p-4">
                         <div class="row g-3">
-                            <!-- Country Dropdown -->
+                           
                             <div class="col-md-4">
                                 <div class="input-group">
                                     <span class="input-group-text bg-light border-0"><i class="bi bi-geo-alt"></i></span>
@@ -99,7 +100,7 @@ session_start();
                                 </div>
                             </div>
                             
-                            <!-- Work Type Dropdown -->
+                           
                             <div class="col-md-3">
                                 <div class="dropdown">
                                     <input type="hidden" name="work_type" id="selectedWorkType" value="">
@@ -116,7 +117,7 @@ session_start();
                                 </div>
                             </div>
                             
-                            <!-- Date Input -->
+                       
                             <div class="col-md-3">
                                 <div class="input-group">
                                     <span class="input-group-text bg-light border-0"><i class="bi bi-calendar"></i></span>
@@ -137,7 +138,7 @@ session_start();
 
 
 
-    <!-- Featured Opportunities Grid -->
+    
     <section class="py-5 bg-light">
         <div class="container">
             <div class="d-flex justify-content-between align-items-center mb-5">
@@ -158,6 +159,7 @@ session_start();
 
                     $query = "SELECT * FROM host ORDER BY country ASC LIMIT 3";
                     $result = $conn->query($query);
+                  
 
                     if ($result->num_rows > 0) {
                         while ($row = $result->fetch_assoc()) {
@@ -165,13 +167,12 @@ session_start();
                             $detailsResult = $conn->query($detailsQuery);
                             $details = $detailsResult->fetch_assoc();
 
-                            // تجاهل المستخدم الحالي
+                           
                             if (isset($_SESSION["currentID"]) && $_SESSION["currentID"] == $row["id"]) {
                                 continue;
                             }
 
-                            // تحديد صفحة البروفايل حسب الدور
-                            $profilePage = ($details['role'] === 'traveler') ? 'travelerProfile.php' : 'hostProfile.php';
+                          
 
                             echo '<div class="col-md-6 col-lg-4">';
                             echo '<div class="card h-100 shadow-sm border-0 overflow-hidden">';
@@ -184,8 +185,8 @@ session_start();
                             echo '<p class="card-text text-muted small"><i class="bi bi-geo-alt"></i> ' . htmlspecialchars($row['country']) . '</p>';
                             echo '<p class="card-text text-muted small">' . htmlspecialchars($row['description']) . '</p>';
 
-                            // فورم للذهاب إلى صفحة البروفايل
-                            echo '<form action="' . $profilePage . '" method="POST">';
+                           
+                            echo '<form action= "hostProfile.php" method="POST">';
                             echo '<input type="hidden" name="user_id" value="' . $row["id"] . '">';
                             echo '<button type="submit" class="btn btn-link text-primary fw-medium small p-0 m-0">View Details</button>';
                             echo '</form>';
@@ -201,7 +202,7 @@ session_start();
 
     </section>
 
-    <!-- How It Works Section -->
+    
     <section class="py-5 bg-white">
         <div class="container">
             <h2 class="text-center fw-bold mb-5">How CultureStay Works</h2>
@@ -228,13 +229,11 @@ session_start();
                     <p class="text-muted">Confirm details with your host, plan your journey, and embark on your cultural exchange adventure. Help with agreed tasks in exchange for accommodation.</p>
                 </div>
             </div>
-            <div class="text-center mt-5">
-                <a href="register.php"></a><button class="btn btn-primary rounded-button px-4 py-3 findHostButton">Get Started Today</button></a>
-            </div>
+          
         </div>
     </section>
 
-    <!-- Membership Benefits -->
+    
     <section class="py-5 bg-light">
         <div class="container">
             <h2 class="text-center fw-bold mb-3">Membership Benefits</h2>
@@ -301,35 +300,12 @@ session_start();
 
 
     <?php
-    include 'footer.php'; // Include your footer file
+    include 'footer.php'; 
     ?>
  
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Initialize tooltips
-            var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
-            var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
-                return new bootstrap.Tooltip(tooltipTriggerEl);
-            });
-            
-            // Mobile menu toggle
-            const menuButton = document.querySelector('.navbar-toggler');
-            if (menuButton) {
-                menuButton.addEventListener('click', function() {
-                    console.log('Menu clicked');
-                });
-            }
-            
-            // Filter toggle
-            const filterButton = document.querySelector('button.text-primary.text-sm.font-medium.flex.items-center');
-            if (filterButton) {
-                filterButton.addEventListener('click', function() {
-                    console.log('Filter clicked');
-                });
-            }
-        });
-    </script>
+   
+    
     
 <script>
 function selectWorkType(type) {
@@ -339,7 +315,7 @@ function selectWorkType(type) {
 }
 </script>
 <script>
-// Function for work type selection (kept from your original code)
+
 function selectWorkType(type) {
     document.getElementById('selectedWorkType').value = type;
     document.getElementById('workTypeDropdown').querySelector('span').textContent = type;
