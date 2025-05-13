@@ -57,7 +57,6 @@
             </div>
         </div>
 
-        <!-- Footer Bottom -->
         <div class="text-center mt-4">
             <p class="footer-secondary-text small mb-0">&copy; <?php echo date("Y"); ?> CultureStay. All rights reserved.</p>
         </div>

@@ -36,7 +36,7 @@ class ListingController
                         <input type="hidden" name="listing_id" value="' . htmlspecialchars($listing['id']) . '">
                         <input type="submit" name="delete" value="Delete">
                     </form>
-                  </td>';
+                    </td>';
             echo '</tr>';
         }
     }

@@ -25,7 +25,6 @@
             <div class="maxWidth hero-content">
                 <?php
                 session_start();
-                //Preloading Required Files
                 use Controller\AdminController as AdminController;
                 use UserTypes\Admin;
                 include "../Controller/AdminController.php";

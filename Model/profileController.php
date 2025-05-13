@@ -6,8 +6,6 @@
     include("connect.php");
 
     $user_id = $_SESSION['currentID'];
-
-    /* based on the role of the user, you will be redirected to either host.php or traveler.php */
     $sql = "SELECT role FROM user WHERE id = $user_id";
     $result = mysqli_query($conn, $sql); 
     $result = mysqli_fetch_assoc($result); 

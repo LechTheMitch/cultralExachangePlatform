@@ -29,7 +29,6 @@ class Listing
         $dbController->closeConnection();
         return $listings;
     }
-    //Provide country or city as parameters
     public static function filterByRegion($place, $location): array
     {
         $dbController = new DBController();

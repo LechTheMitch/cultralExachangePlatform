@@ -22,7 +22,7 @@ if (!empty($traveler['currentHostID'])) {
 
 
 
-$hostName = null; // Default
+$hostName = null; 
 if (!empty($traveler["currentHostID"])) {
     $currentHostID = $traveler["currentHostID"];
     $sqlHostName = "SELECT name FROM user WHERE id = $currentHostID";
@@ -98,31 +98,25 @@ mysqli_close($conn);
     <main>
         <div class="container my-5" style="background-color: #f1f1f1; border-radius: 10px; padding: 30px;">
             <div class="row justify-content-center">
-                <!-- Profile Image -->
                 <div class="col-md-4 d-flex justify-content-center align-items-center mb-4 profile-image-container">
                     <img src="<?php echo $_SESSION['img']; ?>" alt="profileImage"
                         class="img-fluid rounded-circle"
                         style="width: 80%; height: auto; aspect-ratio: 1 / 1; object-fit: cover;">
                 </div>
 
-                <!-- Profile Info -->
                 <div class="col-md-7">
-                    <!-- Name -->
                     <div class="row text-center mb-4 text-section">
                         <h1 class="display-4 text-primary">~| <?php echo $user["name"] ?> |~</h1>
                     </div>
 
-                    <!-- Role -->
                     <div class="row mb-3 text-center text-item">
                         <h4><strong>Role:</strong> <?php echo $user["role"] ?></h4>
                     </div>
 
-                    <!-- Skills -->
                     <div class="row mb-3 text-center text-item">
                         <h4><strong>Skills:</strong> <?php echo $traveler["skills"] ?></h4>
                     </div>
 
-                    <!-- Current Host -->
                     <div class="row mb-3 text-center text-item">
                         <h4><strong>Current Host:</strong> <?php
                                                             if (empty($traveler["currentHostID"])) {
@@ -137,7 +131,6 @@ mysqli_close($conn);
         </div>
 
         <?php if (empty($traveler['currentHostID'])): ?>
-            <!-- No Host Assigned -->
             <div class="container border mt-5 rounded shadow-sm p-4 text-center" style="background-color: #ffcccc;">
                 <h3 class="text-danger">
                     <i class="bi bi-exclamation-triangle-fill me-2"></i>
@@ -145,10 +138,8 @@ mysqli_close($conn);
                 </h3>
             </div>
         <?php else: ?>
-            <!-- Booking and Host Info -->
             <div class="container border mt-5 rounded shadow-sm overflow-hidden" style="background-color: #f7f9f9;">
                 <div class="row">
-                    <!-- Booking Date & Time -->
                     <div class="col-md-6 p-4 rounded-start text-start" style="background-color: #ffe0b2;">
                         <h2>Booking Info</h2>
                         <h4>
@@ -157,7 +148,6 @@ mysqli_close($conn);
                         </h4>
                     </div>
 
-                    <!-- Help & Accommodation Info -->
                     <div class="col-md-6 p-0 text-center">
                         <div class="hover-box p-3 text-white" style="background-color: #6b705c;">
                             <h3 class="w-100">
@@ -178,14 +168,11 @@ mysqli_close($conn);
 
 
 
-        <!-- contact section -->
         <div class="container border mt-3 rounded shadow-sm overflow-hidden">
-            <!-- Header Row -->
             <div class="row p-3 text-white text-center" style="background-color: #3c403d;">
                 <h2 class="w-100"><i class="bi bi-person-lines-fill me-2"></i>Contacts</h2>
             </div>
 
-            <!-- Contact Info -->
             <div class="row text-center">
                 <div class="col p-3 text-white contact-box" style="background-color: #588157;">
                     <h4><i class="bi bi-envelope-fill me-2"></i>Email: <?php echo $user["email"] ?></h4>

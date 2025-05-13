@@ -39,14 +39,12 @@ mysqli_close($conn);
 <main>
     <div class="container mt-5" style="background-color: #f1f1f1; border-radius: 10px; padding: 30px;">
         <div class="row justify-content-center">
-            <!-- Image Section -->
             <div class="col-md-4 d-flex justify-content-center align-items-center mb-4 profile-image-container">
                 <img src="<?php echo $profileImg; ?>" alt="profileImage"
                     class="img-fluid rounded-circle"
                     style="width: 80%; height: auto; aspect-ratio: 1 / 1; object-fit: cover;">
             </div>
 
-            <!-- Info Section -->
             <div class="col-md-7">
                 <div class="row text-center mb-4 text-section">
                     <h1 class="display-4 text-primary"><?php echo $user["name"]; ?></h1>
@@ -82,7 +80,6 @@ mysqli_close($conn);
         </div>
     </div>
 
-    <!-- Description and Info -->
     <div class="container border mt-5 rounded shadow-sm overflow-hidden" style="background-color: #f7f9f9;">
         <div class="row">
             <div class="col-md-6 p-4 rounded-start text-start" style="background-color: #ffe0b2;">
@@ -109,7 +106,6 @@ mysqli_close($conn);
         </div>
     </div>
 
-    <!-- Contact Info -->
     <div class="container border mt-3 rounded shadow-sm overflow-hidden">
         <div class="row p-3 text-white text-center" style="background-color: #3c403d;">
             <h2><i class="bi bi-person-lines-fill me-2"></i>Contacts</h2>

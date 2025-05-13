@@ -13,7 +13,7 @@ if (isset($_POST['signUp'])) {
     $role = $conn->real_escape_string($_POST['role']);
     $Skills = isset($_POST['Skills']) ? $conn->real_escape_string($_POST['Skills']) : '';
 
-    if (isset($_FILES['img']) && $_FILES['img']['error'] === UPLOAD_ERR_OK) {// when user upload image
+    if (isset($_FILES['img']) && $_FILES['img']['error'] === UPLOAD_ERR_OK) {
         $imgName = $_FILES['img']['name'];
         $imgTempName = $_FILES['img']['tmp_name'];
         $time = time();
@@ -35,7 +35,7 @@ if (isset($_POST['signUp'])) {
             $signUp = "Invalid Image Format!";
         }
 
-    } else { // if user does not upload image then default image will be used
+    } else { 
         $imgTargetFolder = "../images/default.jpg" ;
     }
 

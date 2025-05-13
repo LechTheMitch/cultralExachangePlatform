@@ -159,7 +159,6 @@ session_start();
 
                     $query = "SELECT * FROM host ORDER BY country ASC LIMIT 3";
                     $result = $conn->query($query);
-                  
 
                     if ($result->num_rows > 0) {
                         while ($row = $result->fetch_assoc()) {
@@ -167,12 +166,12 @@ session_start();
                             $detailsResult = $conn->query($detailsQuery);
                             $details = $detailsResult->fetch_assoc();
 
-                           
+                            
                             if (isset($_SESSION["currentID"]) && $_SESSION["currentID"] == $row["id"]) {
                                 continue;
                             }
 
-                          
+                            
 
                             echo '<div class="col-md-6 col-lg-4">';
                             echo '<div class="card h-100 shadow-sm border-0 overflow-hidden">';
@@ -185,7 +184,7 @@ session_start();
                             echo '<p class="card-text text-muted small"><i class="bi bi-geo-alt"></i> ' . htmlspecialchars($row['country']) . '</p>';
                             echo '<p class="card-text text-muted small">' . htmlspecialchars($row['description']) . '</p>';
 
-                           
+                            
                             echo '<form action= "hostProfile.php" method="POST">';
                             echo '<input type="hidden" name="user_id" value="' . $row["id"] . '">';
                             echo '<button type="submit" class="btn btn-link text-primary fw-medium small p-0 m-0">View Details</button>';
@@ -229,7 +228,7 @@ session_start();
                     <p class="text-muted">Confirm details with your host, plan your journey, and embark on your cultural exchange adventure. Help with agreed tasks in exchange for accommodation.</p>
                 </div>
             </div>
-          
+            
         </div>
     </section>
 
@@ -302,9 +301,9 @@ session_start();
     <?php
     include 'footer.php'; 
     ?>
- 
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-   
+
     
     
 <script>

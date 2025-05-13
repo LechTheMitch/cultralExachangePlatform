@@ -25,15 +25,14 @@ if(isset($_POST['submit'])){
     $SpokenLanguages=$_POST['SpokenLanguages'];
 
         $insertQuery="INSERT INTO host(id,description,accommodation,country,requiredHelp,title,stateID,datesAvailable,category,learningOpportunities,spokenLanguages)
-                       VALUES ('$userId','$Description','$Accommodation','$Country','$RequiredHelp','$Title','$State_ID','$Dates_Available','$Category','$Learning_Opportunities','$SpokenLanguages')";
+                        VALUES ('$userId','$Description','$Accommodation','$Country','$RequiredHelp','$Title','$State_ID','$Dates_Available','$Category','$Learning_Opportunities','$SpokenLanguages')";
             if($conn->query($insertQuery)==TRUE){
                 header("location: ../View/index.php");
             }
             else{
                 $signUp = "Error:".$conn->error;
             }
-     }
-   
+    }
 
 
 

@@ -194,7 +194,7 @@
             <option value="sw">Swahili</option>
             <option value="am">Amharic</option>
             <option value="zu">Zulu</option>
-           </select>
+            </select>
 
         <label for="CardInformation">CardInformation:</label>
         <input type="text" id="CardInformation" name="CardInformation" required>

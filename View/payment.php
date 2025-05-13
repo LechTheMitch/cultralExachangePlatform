@@ -52,7 +52,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['pay'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Payment</title>
     <style>
-        /* Reset & Base Styles */
         * {
             margin: 0;
             padding: 0;
@@ -61,7 +60,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['pay'])) {
         }
 
         body {
-            background-color: #f0f0f0 !important; /* Added a background color */
+            background-color: #f0f0f0 !important; 
             height: 100vh;
         }
 
@@ -70,7 +69,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['pay'])) {
             max-width: 1120px;
             margin: 0 auto;
         }
-        /* Container */
+        
         .wrapper {
             background: rgba(255, 255, 255, 0.9);
             padding: 20px;
@@ -80,14 +79,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['pay'])) {
             text-align: center;
         }
 
-        /* Title */
+
         h2 {
             margin-bottom: 25px;
             font-size: 28px;
             color: #333;
         }
 
-        /* Form */
+
         .payment-form {
             text-align: left;
             display: flex;
@@ -120,20 +119,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['pay'])) {
             transition: border-color 0.3s ease, box-shadow 0.3s ease;
         }
 
-        /* Focus Effect */
         .payment-form input:focus {
             border-color: green;
             outline: none;
             box-shadow: 0 0 3px green;
         }
 
-        /* Style card info input */
         .payment-form input[type="text"]:not(#film):not(#city):not(#country) {
             font-family: monospace;
             letter-spacing: 2px;
         }
 
-        /* Submit Button */
         .payment-form button {
             background-color: green;
             color: white;
@@ -150,7 +146,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['pay'])) {
             background-color: darkgreen;
         }
 
-        /* Navigation Buttons */
         .buttons {
             display: flex;
             justify-content: space-between;
@@ -158,7 +153,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['pay'])) {
         }
 
 
-        /* Responsive Design */
         @media (max-width: 768px) {
             .container {
                 width: 90%;
